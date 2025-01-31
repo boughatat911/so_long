@@ -90,16 +90,21 @@ void check_map(char *str, t_list	**a)
 		tmp = tmp->next;
 	}
 }
+
+#include <string.h> //dw 
 void map_name(char *str)
 {
 	int i;
 
-	i = ft_strlen(str) - 1;
-	if(str[i] == 'r' && str[i - 1] == 'e' && str[i - 2] == 'b' && str[i - 3] == '.')
-		return ;
-	printf("Error_map_name\n");
+	if (ft_strlen(str) < 4 || strcmp(".ber", &str[ft_strlen(str) - 4]))
+		printf("Error_map_name\n");
+
+	// i = ft_strlen(str) - 1;
+	// if(str[i] == 'r' && str[i - 1] == 'e' && str[i - 2] == 'b' && str[i - 3] == '.')
+	// 	return ;
 	exit(1);
 }
+
 int main(int ac, char **av)
 {
 	t_list *a;
