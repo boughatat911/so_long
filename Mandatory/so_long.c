@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/01 19:25:04 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/01 20:04:26 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int main(int ac, char **av)
 	pp =  player_p(map);
 	flood(tmp_map,pp[0],pp[1]);
 	exit_map(tmp_map, map);
-	free(tmp_map);
-	free(map);
+	ft_free2d(tmp_map);
+	ft_free2d(map);
 	return(0);
 }
