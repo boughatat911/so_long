@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/01 19:06:24 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:15:57 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,20 @@ void ft_error(char **map, char **tmp_map)
 	exit(1);
 }
 
-char	**read_map(char **av)
+char	**read_map(char **av, char	**map)
 {
 	char	*line;
 	int		fd;
-	char	**map;
 	char	*str;
-	int		i;
 	char	*tmp;
 
-	(1) && (str = NULL, i = 0);
+	str = NULL;
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		(write(2, "Error_fd\n", 9), exit (1));
 	line = get_next_line(fd);
 	if (!line)
-		(write(2, "Error_empty\n", 9), exit (1));
+		(write(2, "Error_empty\n", 9), close(fd), exit (1));
 	while (line)
 	{
 		tmp = str;
@@ -54,10 +52,11 @@ char	**read_map(char **av)
 		line = get_next_line (fd);
 	}
 	if (str[ft_strlen(str) - 1] == '\n')
-		(write(2, "Error_\\n\n", 9), free(str), exit(1));
+		(write(2, "Error_\\n\n", 9), close(fd),free(str), exit(1));
 	map = ft_split(str, '\n');
-	free(str);
-	return (map);
+	if (!map)
+		(write(2, "Errtt\n", 7), close(fd), free(str), exit(1));
+	return (free(str), close(fd), map);
 }
 
 void exit_map(char **map, char **map1)

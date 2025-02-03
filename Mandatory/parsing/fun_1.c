@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/01 19:09:54 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/02 14:13:01 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	ft_strcmp(char *s1, char *s2)
 		i++;
 	return (s1[i] - s2[i]);
 }
+
 void check_map(char **str)
 {
 	char **tmp;
