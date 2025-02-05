@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/03 13:26:32 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:01:59 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,8 @@ void player_p(char **map, int *x, int *y)
 	}
 }
 
-void ft_map(char	**av)
+void ft_map(char	**av, char	**map, char	**tmp_map)
 {
-	char **map;
-	char **tmp_map;
 	int i;
 	int x;
 	int y;
@@ -67,9 +65,14 @@ void ft_map(char	**av)
 }
 int main(int ac, char **av)
 {
+	char **map;
+	char **tmp_map;
+
+	map = NULL;
+	tmp_map  = NULL;
 	if (ac != 2)
 		return (write(2, "Error_ac\n", 9), 2);
 	map_name(av[1]);
-	ft_map(av);
+	ft_map(av, map, tmp_map);
 	return(0);
 }

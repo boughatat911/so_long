@@ -2,13 +2,14 @@
 # define SO_LONG_H
 
 
-// typedef struct s_list
-// {
-// 	int				content;
-// 	int				index;
-// 	struct s_list	*next;
-// }					t_s_list;
-
+typedef struct s_textures
+{
+	void		*wall;
+	void		*floor;
+	void		*player;
+	void		*collectible;
+	void		*exit;
+} 				t_textures;
 #include <stdio.h> ///////////////////
 # include <stdlib.h>
 # include <unistd.h>
@@ -31,7 +32,7 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
 void putstr(char *str, int fd);
-void ft_map(char	**av);
+void ft_map(char	**av, char	**map, char	**tmp_map);
 void ft_error(char **map, char **tmp_map);
 int wall(char *str, int flag, char **ss);
 void wall_check(char **ss);
