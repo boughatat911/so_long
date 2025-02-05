@@ -22,7 +22,7 @@
 
 void mlx_map(char **map);
 void	ft_free2d(char **array);
-void 	putstr(char *str);
+// void 	putstr(char *str);
 char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
@@ -30,7 +30,7 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
-
+void putstr(char *str, int fd);
 void ft_map(char	**av);
 void ft_error(char **map, char **tmp_map);
 int wall(char *str, int flag, char **ss);
