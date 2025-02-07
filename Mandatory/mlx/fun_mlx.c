@@ -6,7 +6,16 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/07 16:28:00 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/07 19:58:56 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../so_long.h"
+
+// void	hook_key(void	*src)
+// {
+// 	void	*key;
+
+// 	key = mlx_hook();
+	
+// }
