@@ -1,6 +1,11 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# define W 119
+# define A 97
+# define S 115
+# define ESC 65307
+
 
 typedef struct s_textures {
 	void	*wall;
@@ -18,7 +23,7 @@ typedef struct s_game {
 	int		y;
 }	t_game;
 
-# include <stdio.h> ///////////////////
+# include <stdio.h> 
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -40,6 +45,8 @@ void	render_tile(t_game *game, void *texture);
 void	render_map(t_game *game, char **map);
 
 
+
+///////////////parsing_function//////////////////////////////
 void	ft_free2d(char **array);
 char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);
@@ -54,7 +61,7 @@ void 	ft_error(char **map, char **tmp_map);
 int 	wall(char *str, int flag, char **ss);
 void	wall_check(char **ss);
 void	check_map(char **str);
-int	ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 void	check_map(char **str);
 void	map_name(char *str);
 char	**read_map(char **av, char **map);
