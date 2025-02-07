@@ -6,13 +6,13 @@
 #    By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 17:55:16 by nbougrin          #+#    #+#              #
-#    Updated: 2025/02/05 20:08:43 by nbougrin         ###   ########.fr        #
+#    Updated: 2025/02/07 12:45:09 by nbougrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	so_long
 
-CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror #-fsanitize=address
 
 MLX_DIR =	mlx_linux  # MLX folder is directly in the root directory
 MLX_LIB =	$(MLX_DIR)/libmlx_Linux.a
