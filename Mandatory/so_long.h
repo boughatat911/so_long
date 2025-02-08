@@ -65,8 +65,8 @@ int		ft_strcmp(char *s1, char *s2);
 void	check_map(char **str);
 void	map_name(char *str);
 char	**read_map(char **av, char **map);
-void	   flood(char **map, int x, int y);
-void	player_p(char **map, int *x, int *y);
+void	   flood(char **map, int y, int x);
+void	player_p(char **map, int *y, int *x);
 void	exit_map(char **map, char **map1);
 
 

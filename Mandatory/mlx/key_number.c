@@ -1,4 +1,4 @@
-#include <stdio.h>  // For printf()
+#include "../so_long.h"  // For printf()
 // #include "mlx.h"    // Include the MiniLibX library
 
 int key_press(int keycode, void *param)

@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/05 18:43:07 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:49:24 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,16 @@ void exit_map(char **map, char **map1)
 	}
 }
 
-void	flood(char **map, int x, int y)
+void	flood(char **map, int y, int x)
 {
-	if (map[x][y] == 'E')
-		map[x][y] = 'X';
-	else if (map[x][y] != '1' && map[x][y] != 'X')
+	if (map[y][x] == 'E')
+		map[y][x] = 'X';
+	else if (map[y][x] != '1' && map[y][x] != 'X')
 	{
-		map[x][y] = 'X';
-		flood(map, x + 1, y);
-		flood(map, x, y + 1);
-		flood(map, x - 1, y);
-		flood(map, x, y - 1);
+		map[y][x] = 'X';
+		flood(map, y + 1, x);
+		flood(map, y, x + 1);
+		flood(map, y - 1, x);
+		flood(map, y, x - 1);
 	}
 }

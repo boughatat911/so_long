@@ -6,13 +6,13 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/05 20:01:59 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:46:57 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void player_p(char **map, int *x, int *y)
+void player_p(char **map, int *y, int *x)
 {
 	int 		i;
 	int 		j;
@@ -26,8 +26,8 @@ void player_p(char **map, int *x, int *y)
 		{
 			if(map[i][j] == 'P')
 			{
-				*x = i;
-				*y = j;
+				*x = j;
+				*y = i;
 				return ;
 			}
 			j++;
@@ -41,6 +41,7 @@ void ft_map(char	**av, char	**map, char	**tmp_map)
 	int i;
 	int x;
 	int y;
+	t_game game;
 
 	x = 0;
 	y = 0;
@@ -57,7 +58,7 @@ void ft_map(char	**av, char	**map, char	**tmp_map)
 	while (map[i])
 		(tmp_map[i] = ft_strdup(map[i]), i++);
 	tmp_map[i] = NULL;
-	player_p(map, &x, &y);
+	player_p(map, &game.y,&game.x);
 	mlx_map(map);
 	flood(tmp_map, x, y);
 	exit_map(tmp_map, map);
