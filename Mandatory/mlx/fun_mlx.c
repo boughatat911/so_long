@@ -6,52 +6,23 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/08 18:39:24 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/08 20:11:37 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	ft_putchar(char c)
-{
-	write (1, &c, 1);
-	return (1);
-}
 
-int	ft_putnbr(int n)
-{
-	int	i;
-
-	i = 0;
-	if (n == -2147483648)
-		return (write (1, "-2147483648", 11));
-	else if (n < 0)
-	{
-		i = ft_putchar ('-');
-		n *= -1;
-		i += ft_putnbr(n);
-	}
-	else if (n >= 10)
-	{
-		i += ft_putnbr (n / 10);
-		i += ft_putchar (n % 10 + '0');
-	}
-	else if (n >= 0 && n < 10)
-		i += ft_putchar (n % 10 + '0');
-	return (i);
-}
 void key_action(int key, char **map)
 {
-	int x;
-	int y;
 	int t_x;
 	int t_y;
+	t_game game;
+	t_game game;
 
-	x = 0;
-	y = 0;
-	player_p(map, &x, &y);
-	t_x = x;
-	t_y = y;
+	player_p(map, &game.y,&game.x);
+	t_y = game.y;
+	t_x = game.x;
 	if (key == 'W')
 		t_y--;
 	else if (key == 'S')
@@ -62,16 +33,14 @@ void key_action(int key, char **map)
 		t_x++;
 	if (map[t_x][t_y] != '1')
 	{
-		map[x][y] = '0';
+		game.n++;
+		map[game.y][game.x] = '0';
 		map[t_x][t_y] = 'P';
-		// puts
+		mlx_put_image_to_window(game.mlx, game.win, game.textures.floor, game.y * TILE_SIZE, game.x * TILE_SIZE);
+		mlx_put_image_to_window(game.mlx, game.win, game.textures.floor, t_y * TILE_SIZE, t_x * TILE_SIZE);
+		game.y = t_y;
+		game.x = t_x;
+		printf("move number is : %d\n", game.n);
 	}
 }
-void	hook_key(void	*mlx, void *win)
-{
-	void	*key;
 
-	
-	mlx_key_hook(win, key_action, NULL);
-	mlx_loop(mlx);
-}

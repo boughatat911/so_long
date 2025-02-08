@@ -6,7 +6,7 @@
 #    By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 17:55:16 by nbougrin          #+#    #+#              #
-#    Updated: 2025/02/07 12:45:09 by nbougrin         ###   ########.fr        #
+#    Updated: 2025/02/08 20:03:59 by nbougrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ MLX_FLAGS =	-L$(MLX_DIR) -lmlx_Linux -lX11 -lXext -lm
 
 FILES	=	Mandatory/so_long.c Mandatory/parsing/fun_1.c Mandatory/parsing/fun_2.c \
 			Mandatory/utils_libft/ft_split.c Mandatory/utils_libft/get_next_line.c Mandatory/utils_libft/get_next_line_utils.c \
-			Mandatory/mlx/mlx.c
+			Mandatory/mlx/mlx.c Mandatory/mlx/fun_mlx.c
 
 OBJ	=	$(FILES:.c=.o)
 

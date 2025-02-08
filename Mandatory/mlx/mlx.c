@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/07 16:30:05 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/08 20:10:38 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	mlx_map(char **map)
 	}
 	load_textures(game.mlx, &game);
 	render_map(&game, map);
+	mlx_key_hook(game.win, key_action, &game);
 	mlx_loop(game.mlx);
 	mlx_destroy_window(game.mlx, game.win);
 }

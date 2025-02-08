@@ -6,13 +6,13 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/08 18:46:57 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:39:38 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void player_p(char **map, int *y, int *x)
+void	player_p(char **map, int *y, int *x)
 {
 	int 		i;
 	int 		j;

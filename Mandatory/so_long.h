@@ -21,6 +21,7 @@ typedef struct s_game {
 	t_textures	textures;
 	int		x;
 	int		y;
+	int		n;
 }	t_game;
 
 # include <stdio.h> 
@@ -43,7 +44,7 @@ void	*create_window(void *mlx, char **map, int *win_width, int *win_height);
 void	load_textures(void *mlx, t_game *game);
 void	render_tile(t_game *game, void *texture);
 void	render_map(t_game *game, char **map);
-
+void 	key_action(int key, char **map);
 
 
 ///////////////parsing_function//////////////////////////////
