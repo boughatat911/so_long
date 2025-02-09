@@ -4,6 +4,7 @@
 # define W 119
 # define A 97
 # define S 115
+# define D 100
 # define ESC 65307
 
 
@@ -18,10 +19,14 @@ typedef struct s_textures {
 typedef struct s_game {
 	void		*mlx;
 	void		*win;
+	char		**map;
+	char		**tmp_map;
 	t_textures	textures;
 	int		x;
 	int		y;
 	int		n;
+	int 	map_width;
+	int 	map_height;
 }	t_game;
 
 # include <stdio.h> 
@@ -44,7 +49,8 @@ void	*create_window(void *mlx, char **map, int *win_width, int *win_height);
 void	load_textures(void *mlx, t_game *game);
 void	render_tile(t_game *game, void *texture);
 void	render_map(t_game *game, char **map);
-void 	key_action(int key, char **map);
+int	key_action(int key,void *param);
+int	handle_keypress(int key, t_game *g); //************* */
 
 
 ///////////////parsing_function//////////////////////////////

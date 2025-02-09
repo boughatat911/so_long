@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/08 20:10:38 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:51:38 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ void	*create_window(void *mlx, char **map, int *win_width, int *win_height)
 {
 	int	map_width;
 	int	map_height;
-
+	t_game game;
 	map_width = ft_strlen(map[0]);
 	map_height = 0;
+	
 	while (map[map_height])
 		map_height++;
+		game.map_height = map_height;
+		game.map_width = map_width;
 	*win_width = map_width * TILE_SIZE;
 	*win_height = map_height * TILE_SIZE;
 	return (mlx_new_window(mlx, *win_width, *win_height, "GTA"));
@@ -79,6 +82,7 @@ void	mlx_map(char **map)
 	int		win_width;
 	int		win_height;
 
+	game.n = 0;
 	game.mlx = mlx_init();
 	if (!game.mlx)
 		return ;
@@ -88,9 +92,15 @@ void	mlx_map(char **map)
 		free(game.mlx);
 		return ;
 	}
+	game.map = map;
 	load_textures(game.mlx, &game);
 	render_map(&game, map);
-	mlx_key_hook(game.win, key_action, &game);
+	//mlx_key_hook(game.win, key_action, &game);
+	// mlx_hook_(game.win, 2, 1L << 0, key_action, &game);
+	// mlx_hook (game.mlx,2, 0, handle_keypress, &game);
+	mlx_hook(game.win, 2, 1L << 0, handle_keypress, &game);
+	printf("<====>\n");
 	mlx_loop(game.mlx);
-	mlx_destroy_window(game.mlx, game.win);
+	// mlx_destroy_window(game.mlx, game.win);
+	
 }

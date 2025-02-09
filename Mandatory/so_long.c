@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/08 19:39:38 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:16:55 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	player_p(char **map, int *y, int *x)
 		{
 			if(map[i][j] == 'P')
 			{
-				*x = j;
 				*y = i;
+				*x = j;
 				return ;
 			}
 			j++;
@@ -45,7 +45,6 @@ void ft_map(char	**av, char	**map, char	**tmp_map)
 
 	x = 0;
 	y = 0;
-	map = NULL;
 	i = 0;
 	map = read_map(av, map);
 	check_map(map);
@@ -58,22 +57,21 @@ void ft_map(char	**av, char	**map, char	**tmp_map)
 	while (map[i])
 		(tmp_map[i] = ft_strdup(map[i]), i++);
 	tmp_map[i] = NULL;
+	// printf("%p == %p\n",map[0][0],tmp_map[][]);
 	player_p(map, &game.y,&game.x);
 	mlx_map(map);
-	flood(tmp_map, x, y);
+	flood(tmp_map, game.y, game.x);
 	exit_map(tmp_map, map);
 	(ft_free2d(tmp_map), ft_free2d(map));
 }
 int main(int ac, char **av)
 {
-	char **map;
-	char **tmp_map;
-
-	map = NULL;
-	tmp_map  = NULL;
+	t_game game;
+	game.map = NULL;
+	game.tmp_map  = NULL;
 	if (ac != 2)
 		return (write(2, "Error_ac\n", 9), 2);
 	map_name(av[1]);
-	ft_map(av, map, tmp_map);
+	ft_map(av, game.map, game.tmp_map);
 	return(0);
 }
