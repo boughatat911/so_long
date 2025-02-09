@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/09 20:04:24 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/09 20:12:20 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,20 +266,20 @@ static void	move_player(t_game *g, int new_x, int new_y)
 		g->map[new_x][new_y] = 'P';
 		g->n++;
 	}
-	// if (g->map[new_x][new_y] == 'C')
-	// {
-	// 	g->move++;
-	// 	g->map[g->x][g->y] = '0';
-	// 	g->map[new_x][new_y] = 'P';
-	// 	g->count_c--;
-	// }
-	// if (g->map[new_x][new_y] == 'E' && g->count_c == 0)
-	// {
-	// 	write (1, "You won!\n", 10);
-	// 	exit_window(g);
-	// }
-	// if (g->map[new_x][new_y] == 'E' && g->count_c != 0)
-	// 	return ;
+	if (g->map[new_x][new_y] == 'C')
+	{
+		g->n++;
+		g->map[g->x][g->y] = '0';
+		g->map[new_x][new_y] = 'P';
+		g->c--;
+	}
+	if (g->map[new_x][new_y] == 'E' && g->c == 0)
+	{
+		write (1, "You won!\n", 10);
+		exit(1);
+	}
+	if (g->map[new_x][new_y] == 'E' && g->c != 0)
+		return ;
 	if (g->map[new_x][new_y] == '1')
 		return ;
 	render_map(g, g->map);

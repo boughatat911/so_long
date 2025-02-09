@@ -25,6 +25,7 @@ typedef struct s_game {
 	int		x;
 	int		y;
 	int		n;
+	int		c;
 	int 	map_width;
 	int 	map_height;
 }	t_game;

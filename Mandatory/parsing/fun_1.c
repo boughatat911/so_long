@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/02 14:13:01 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/09 20:09:55 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void wall_check(char **ss)
 		}
 		j++;
 	}
+	t_game game;
+	game.c = c;
 	if(p != 1 || e != 1 || c < 0)
 		(write (1, "error_<\n", 8), ft_free2d(ss), exit(1));
 	(wall(ss[j-1], 2, ss), wall(ss[0], 2, ss));	
