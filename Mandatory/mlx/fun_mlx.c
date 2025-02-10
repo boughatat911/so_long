@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/10 16:25:13 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:20:39 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static void	move_player(t_game *g, int new_x, int new_y)
 	}
 	if (g->map[new_x][new_y] == 'E' && g->c == 0)
 	{
-		write (1, "You won!\n", 10);
-		exit(1);
+		// write (1, "You won!\n", 10);
+		ft_exit(g, 1, "You won!");
 	}
 	if (g->map[new_x][new_y] == 'E' && g->c != 0)
 		return ;
@@ -80,7 +80,7 @@ static void	action_player(int key, t_game *g)
 int	handle_keypress(int key, t_game *g)
 {
 	if (key == ESC)
-		exit(1);
+		ft_exit(g, 1, "you are exit");
 	if (key == W || key == S || key == A || key == D)
 		action_player(key, g);
 	return (0);

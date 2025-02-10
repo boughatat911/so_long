@@ -65,7 +65,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
 void 	putstr(char *str, int fd);
 void 	ft_map(char	**av,t_game *game);
-void 	ft_error(char **map, char **tmp_map);
+void 	ft_exit(t_game	*game, int fd, char	*str);
 int 	wall(char *str, int flag, char **ss);
 void	wall_check(t_game *game);
 // void	check_map(char **str);
@@ -75,7 +75,7 @@ void	map_name(char *str);
 void	read_map(char **av, t_game *game);
 void	   flood(char **map, int y, int x);
 void	player_p(char **map, int *y, int *x);
-void	exit_map(char **map, char **map1);
+void	exit_map(t_game *game);
 
 
 

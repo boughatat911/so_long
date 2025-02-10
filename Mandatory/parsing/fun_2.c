@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/10 15:31:47 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:49:47 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,16 @@ void	ft_free2d(char **array)
 	free(array);
 }
 
-void ft_error(char **map, char **tmp_map)
+void ft_exit(t_game	*game, int fd, char	*str)
 {
-	ft_free2d(map);
-	ft_free2d(tmp_map);
-	write(2, "Error\n", 6);
-	exit(1);
+	ft_free2d(game->map);
+	ft_free2d(game->tmp_map);
+	free(game);
+	putstr(str,fd);
+	if (fd == 1)
+		exit(0);
+	else
+	exit (1);
 }
 
 void	read_map(char **av, t_game *game)
@@ -40,10 +44,10 @@ void	read_map(char **av, t_game *game)
 	str = NULL;
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		(write(2, "Error_fd\n", 9), exit (1));
+		ft_exit(game, 2, "fd error");
 	line = get_next_line(fd);
 	if (!line)
-		(write(2, "Error_empty\n", 9), close(fd), exit (1));
+		(close(fd), ft_exit(game, 2, "Empty map"));
 	while (line)
 	{
 		tmp = str;
@@ -52,28 +56,27 @@ void	read_map(char **av, t_game *game)
 		line = get_next_line (fd);
 	}
 	if (str[ft_strlen(str) - 1] == '\n')
-		(write(2, "Error_\\n\n", 9), close(fd),free(str), exit(1));
-	printf("read_map<=====>\n");
+		ft_exit(game, 2, "Error finding new line in end of map");
 	game->map = ft_split(str, '\n');
 	if (!game->map)
-		(write(2, "Errtt\n", 7), close(fd), free(str), exit(1));
+		(close(fd), free(str), ft_exit(game, 2, "Error"));
 	free(str), close(fd);
 }
 
-void exit_map(char **map, char **map1)
+void exit_map(t_game *game)
 {
 	int i;
 	int j;
 
 	i = 0;
 	j = 0;
-	while(map[i])
+	while(game->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (game->map[i][j])
 		{
-			if(map[i][j] != '1' && map[i][j] != 'X')
-				ft_error(map, map1);
+			if(game->map[i][j] != '1' && game->map[i][j] != 'X')
+				ft_exit(game, 2, "Error Player");
 			j++;
 		}
 		i++;

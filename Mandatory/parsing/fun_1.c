@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/10 16:19:56 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:42:16 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void wall_check(t_game *game)
 		while (str[i])
 		{
 			if(!((str[i] == '1') || (str[i] == '0') || (str[i] == 'C') || (str[i] == 'P') || (str[i] == 'E')))
-				(write (1, "error_wall\n", 8), ft_free2d(game->map), exit(1));
+				ft_exit(game, 2, "Error map");
 			if(str[i] == 'C')
 				c++;
 			else if(str[i] == 'P')
@@ -63,7 +63,7 @@ void wall_check(t_game *game)
 	}
 	game->c = c;
 	if(p != 1 || e != 1 || c < 0)
-		(write (1, "error_<\n", 8), ft_free2d(game->map), exit(1));
+		ft_exit(game, 2, "Error map");
 	(wall(game->map[j-1], 2, game->map), wall(game->map[0], 2, game->map));	
 }
 
