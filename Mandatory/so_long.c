@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/09 17:16:55 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:56:54 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,42 +36,41 @@ void	player_p(char **map, int *y, int *x)
 	}
 }
 
-void ft_map(char	**av, char	**map, char	**tmp_map)
+void ft_map(char	**av, t_game *game)
 {
 	int i;
 	int x;
 	int y;
-	t_game game;
 
 	x = 0;
 	y = 0;
 	i = 0;
-	map = read_map(av, map);
-	check_map(map);
-	while(map[i])
+	read_map(av, game);
+	check_map(game);
+	while(game->map[i])
 		i++;
-	tmp_map = malloc(sizeof(char *) * (i + 1));
-	if (!tmp_map)
-		(write(2, "Errort\n", 6), ft_free2d(map), exit(1));
+	game->tmp_map = malloc(sizeof(char *) * (i + 1));
+	if (!game->tmp_map)
+		(write(2, "Errort\n", 6), ft_free2d(game->map), exit(1));
 	i = 0;
-	while (map[i])
-		(tmp_map[i] = ft_strdup(map[i]), i++);
-	tmp_map[i] = NULL;
-	// printf("%p == %p\n",map[0][0],tmp_map[][]);
-	player_p(map, &game.y,&game.x);
-	mlx_map(map);
-	flood(tmp_map, game.y, game.x);
-	exit_map(tmp_map, map);
-	(ft_free2d(tmp_map), ft_free2d(map));
+	while (game->map[i])
+		(game->tmp_map[i] = ft_strdup(game->map[i]), i++);
+	game->tmp_map[i] = NULL;
+	player_p(game->map, &game->y,&game->x);
+	mlx_map(game);
+	flood(game->tmp_map, game->y, game->x);
+	exit_map(game->tmp_map, game->map);
+	(ft_free2d(game->tmp_map), ft_free2d(game->map));
 }
 int main(int ac, char **av)
 {
-	t_game game;
-	game.map = NULL;
-	game.tmp_map  = NULL;
+	t_game *game;
+	// game->map = NULL;
+	// game->tmp_map  = NULL;
+	game = malloc(sizeof(t_game));
 	if (ac != 2)
 		return (write(2, "Error_ac\n", 9), 2);
 	map_name(av[1]);
-	ft_map(av, game.map, game.tmp_map);
+	ft_map(av, game);
 	return(0);
 }

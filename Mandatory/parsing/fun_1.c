@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/09 20:09:55 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:19:56 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int wall(char *str, int flag, char **ss)
 		}
 	return (0);
 }
-void wall_check(char **ss)
+void wall_check(t_game *game)
 {
 	char *str;
 	int i;
@@ -44,13 +44,13 @@ void wall_check(char **ss)
 	int j;
 
 	(1) && (i = 0, c = 0, p = 0, e = 0, j = 0);
-	while (ss[j])
+	while (game->map[j])
 	{
-		(str = ss[j], i = 0);
+		(str = game->map[j], i = 0);
 		while (str[i])
 		{
 			if(!((str[i] == '1') || (str[i] == '0') || (str[i] == 'C') || (str[i] == 'P') || (str[i] == 'E')))
-				(write (1, "error_wall\n", 8), ft_free2d(ss), exit(1));
+				(write (1, "error_wall\n", 8), ft_free2d(game->map), exit(1));
 			if(str[i] == 'C')
 				c++;
 			else if(str[i] == 'P')
@@ -61,11 +61,10 @@ void wall_check(char **ss)
 		}
 		j++;
 	}
-	t_game game;
-	game.c = c;
+	game->c = c;
 	if(p != 1 || e != 1 || c < 0)
-		(write (1, "error_<\n", 8), ft_free2d(ss), exit(1));
-	(wall(ss[j-1], 2, ss), wall(ss[0], 2, ss));	
+		(write (1, "error_<\n", 8), ft_free2d(game->map), exit(1));
+	(wall(game->map[j-1], 2, game->map), wall(game->map[0], 2, game->map));	
 }
 
 int	ft_strcmp(char *s1, char *s2)
@@ -78,30 +77,30 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void check_map(char **str)
+void	check_map(t_game *game)
 {
 	char **tmp;
 	int i; 
 	int j;
 	
-	tmp = str;
+	tmp = game->map;
 	i = 0;
-	while(str[i])
+	while(game->map[i])
 	{
 		j = 0;
 		while(tmp[j])
 		{
-			if((ft_strlen(str[i]) != ft_strlen(tmp[j])) || (wall(tmp[j], 1, str) == 911))
+			if((ft_strlen(game->map[i]) != ft_strlen(tmp[j])) || (wall(tmp[j], 1, game->map) == 911))
 			{
 				write(2, "Error_map_len\n", 14);
-				ft_free2d(str);
+				// ft_free2d(str); ///************************* */ free struct
 				exit(1);
 			}
 			j++;
 		}
 		i++;
 	}
-	wall_check(str);
+	wall_check(game);
 }
 
 void map_name(char *str)

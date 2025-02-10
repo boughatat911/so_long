@@ -6,43 +6,40 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/09 19:51:38 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:27:28 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include "/home/nbougrin/boughatat/so_long/Mandatory/so_long.h"
 
-void	*create_window(void *mlx, char **map, int *win_width, int *win_height)
+void	*create_window(t_game *game, int *win_width, int *win_height)
 {
 	int	map_width;
 	int	map_height;
-	t_game game;
-	map_width = ft_strlen(map[0]);
+	map_width = ft_strlen(game->map[0]);
 	map_height = 0;
 	
-	while (map[map_height])
+	while (game->map[map_height])
 		map_height++;
-		game.map_height = map_height;
-		game.map_width = map_width;
+		// game->map_height = map_height;/////******************//////
+		// game->map_width = map_width;/////******************//////
 	*win_width = map_width * TILE_SIZE;
 	*win_height = map_height * TILE_SIZE;
-	return (mlx_new_window(mlx, *win_width, *win_height, "GTA"));
+	return (mlx_new_window(game->mlx, *win_width, *win_height, "GTA"));
 }
 
-void	load_textures(void *mlx, t_game *game)
+void	load_textures(t_game *game)
 {
 	int	w;
 	int	h;
 
-	w = 0;
-	h = 0;
-	game->textures.wall = mlx_xpm_file_to_image(mlx, "wall.xpm", &w, &h);
-	game->textures.floor = mlx_xpm_file_to_image(mlx, "floor.xpm", &w, &h);
-	game->textures.player = mlx_xpm_file_to_image(mlx, "player.xpm", &w, &h);
-	game->textures.collectible = mlx_xpm_file_to_image(mlx,
+	game->textures.wall = mlx_xpm_file_to_image(game->mlx, "wall.xpm", &w, &h);
+	game->textures.floor = mlx_xpm_file_to_image(game->mlx, "floor.xpm", &w, &h);
+	game->textures.player = mlx_xpm_file_to_image(game->mlx, "player.xpm", &w, &h);
+	game->textures.collectible = mlx_xpm_file_to_image(game->mlx,
 			"collectible.xpm", &w, &h);
-	game->textures.exit = mlx_xpm_file_to_image(mlx, "exit.xpm", &w, &h);
+	game->textures.exit = mlx_xpm_file_to_image(game->mlx, "exit.xpm", &w, &h);
 }
 
 void	render_tile(t_game *game, void *texture)
@@ -76,31 +73,24 @@ void	render_map(t_game *game, char **map)
 	}
 }
 
-void	mlx_map(char **map)
+void	mlx_map(t_game *game)
 {
-	t_game	game;
 	int		win_width;
 	int		win_height;
 
-	game.n = 0;
-	game.mlx = mlx_init();
-	if (!game.mlx)
+	game->n = 0;
+	game->mlx = mlx_init();
+	if (!game->mlx)
 		return ;
-	game.win = create_window(game.mlx, map, &win_width, &win_height);
-	if (!game.win)
+	game->win = create_window(game, &win_width, &win_height);
+	if (!game->win)
 	{
-		free(game.mlx);
+		free(game->mlx);
 		return ;
 	}
-	game.map = map;
-	load_textures(game.mlx, &game);
-	render_map(&game, map);
-	//mlx_key_hook(game.win, key_action, &game);
-	// mlx_hook_(game.win, 2, 1L << 0, key_action, &game);
-	// mlx_hook (game.mlx,2, 0, handle_keypress, &game);
-	mlx_hook(game.win, 2, 1L << 0, handle_keypress, &game);
-	printf("<====>\n");
-	mlx_loop(game.mlx);
-	// mlx_destroy_window(game.mlx, game.win);
-	
+	load_textures(game);
+	render_map(game, game->map);
+	mlx_hook(game->win, 2, 1L << 0, handle_keypress, game);
+	mlx_loop(game->mlx);
+	mlx_destroy_window(game->mlx, game->win);
 }

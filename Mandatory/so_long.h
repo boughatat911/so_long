@@ -26,8 +26,8 @@ typedef struct s_game {
 	int		y;
 	int		n;
 	int		c;
-	int 	map_width;
-	int 	map_height;
+	// int 	map_width;
+	// int 	map_height;
 }	t_game;
 
 # include <stdio.h> 
@@ -45,13 +45,13 @@ typedef struct s_game {
 
 
 ///////////////mlx_function//////////////////////////////
-void	mlx_map(char **map);
-void	*create_window(void *mlx, char **map, int *win_width, int *win_height);
-void	load_textures(void *mlx, t_game *game);
+void	mlx_map(t_game	*game);
+void	*create_window(t_game *game, int *win_width, int *win_height);
+void	load_textures(t_game *game);
 void	render_tile(t_game *game, void *texture);
 void	render_map(t_game *game, char **map);
-int	key_action(int key,void *param);
-int	handle_keypress(int key, t_game *g); //************* */
+int		key_action(int key,void *param);
+int		handle_keypress(int key, t_game *g); //************* */
 
 
 ///////////////parsing_function//////////////////////////////
@@ -64,15 +64,15 @@ char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlen(const char *s);
 void 	putstr(char *str, int fd);
-void 	ft_map(char	**av, char	**map, char	**tmp_map);
+void 	ft_map(char	**av,t_game *game);
 void 	ft_error(char **map, char **tmp_map);
 int 	wall(char *str, int flag, char **ss);
-void	wall_check(char **ss);
-void	check_map(char **str);
+void	wall_check(t_game *game);
+// void	check_map(char **str);
 int		ft_strcmp(char *s1, char *s2);
-void	check_map(char **str);
+void	check_map(t_game *game);
 void	map_name(char *str);
-char	**read_map(char **av, char **map);
+void	read_map(char **av, t_game *game);
 void	   flood(char **map, int y, int x);
 void	player_p(char **map, int *y, int *x);
 void	exit_map(char **map, char **map1);

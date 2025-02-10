@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/08 18:49:24 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:31:47 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void ft_error(char **map, char **tmp_map)
 	exit(1);
 }
 
-char	**read_map(char **av, char	**map)
+void	read_map(char **av, t_game *game)
 {
 	char	*line;
 	int		fd;
@@ -53,10 +53,11 @@ char	**read_map(char **av, char	**map)
 	}
 	if (str[ft_strlen(str) - 1] == '\n')
 		(write(2, "Error_\\n\n", 9), close(fd),free(str), exit(1));
-	map = ft_split(str, '\n');
-	if (!map)
+	printf("read_map<=====>\n");
+	game->map = ft_split(str, '\n');
+	if (!game->map)
 		(write(2, "Errtt\n", 7), close(fd), free(str), exit(1));
-	return (free(str), close(fd), map);
+	free(str), close(fd);
 }
 
 void exit_map(char **map, char **map1)
