@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/10 16:27:28 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:57:04 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ void	*create_window(t_game *game, int *win_width, int *win_height)
 {
 	int	map_width;
 	int	map_height;
+
 	map_width = ft_strlen(game->map[0]);
 	map_height = 0;
-	
 	while (game->map[map_height])
 		map_height++;
-		// game->map_height = map_height;/////******************//////
-		// game->map_width = map_width;/////******************//////
 	*win_width = map_width * TILE_SIZE;
 	*win_height = map_height * TILE_SIZE;
 	return (mlx_new_window(game->mlx, *win_width, *win_height, "GTA"));

@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/10 17:20:39 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/10 17:51:08 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,7 @@ static void	move_player(t_game *g, int new_x, int new_y)
 		g->c--;
 	}
 	if (g->map[new_x][new_y] == 'E' && g->c == 0)
-	{
-		// write (1, "You won!\n", 10);
-		ft_exit(g, 1, "You won!");
-	}
+		ft_exit(g, 1, "You win!");
 	if (g->map[new_x][new_y] == 'E' && g->c != 0)
 		return ;
 	if (g->map[new_x][new_y] == '1')
