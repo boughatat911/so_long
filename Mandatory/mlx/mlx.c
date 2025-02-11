@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/10 17:57:04 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:45:13 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ void	load_textures(t_game *game)
 	int	w;
 	int	h;
 
-	game->textures.wall = mlx_xpm_file_to_image(game->mlx, "wall.xpm", &w, &h);
-	game->textures.floor = mlx_xpm_file_to_image(game->mlx, "floor.xpm", &w, &h);
-	game->textures.player = mlx_xpm_file_to_image(game->mlx, "player.xpm", &w, &h);
+	game->textures.wall = mlx_xpm_file_to_image
+		(game->mlx, "wall.xpm", &w, &h);
+	game->textures.floor = mlx_xpm_file_to_image
+		(game->mlx, "floor.xpm", &w, &h);
+	game->textures.player = mlx_xpm_file_to_image
+		(game->mlx, "player.xpm", &w, &h);
 	game->textures.collectible = mlx_xpm_file_to_image(game->mlx,
 			"collectible.xpm", &w, &h);
 	game->textures.exit = mlx_xpm_file_to_image(game->mlx, "exit.xpm", &w, &h);

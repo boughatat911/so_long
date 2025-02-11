@@ -6,14 +6,13 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/10 17:51:08 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/11 14:43:16 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-
-void	find_player(t_game *g)
+void	find_player(t_game	*g)
 {
 	int	i;
 	int	j;
@@ -58,7 +57,7 @@ static void	move_player(t_game *g, int new_x, int new_y)
 	if (g->map[new_x][new_y] == '1')
 		return ;
 	render_map(g, g->map);
-	printf("move => [%d] <<=>> coins => [%d]\n",g->n,  g->c);
+	printf("move => [%d] <<=>> coins => [%d]\n", g->n,  g->c);
 }
 
 static void	action_player(int key, t_game *g)
