@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/11 15:44:11 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:59:37 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	wall(char *str, int flag, t_game *game)
 		while (str[i])
 		{
 			if (str[i] != '1')
-				ft_exit(game, 2, "Error wall");
+				ft_exit(game, 2, "Error wall", 0);
 			i++;
 		}
 	}
@@ -48,7 +48,7 @@ void	wall_check(t_game	*g)
 			if (!((g->s[i] == '1') || (g->s[i] == '0') || (
 						g->s[i] == 'C') || (
 						g->s[i] == 'P') || (g->s[i] == 'E')))
-				ft_exit(g, 2, "Error map");
+				ft_exit(g, 2, "Error map", 0);
 			if (g->s[i] == 'C')
 				g->c++;
 			else if (g->s[i] == 'P')
@@ -60,7 +60,7 @@ void	wall_check(t_game	*g)
 		g->j++;
 	}
 	if (g->p != 1 || g->e != 1 || g->c < 0)
-		ft_exit(g, 2, "Error map");
+		ft_exit(g, 2, "Error map", 0);
 	(wall(g->map[g->j - 1], 2, g), wall(g->map[0], 2, g));
 }
 
@@ -90,7 +90,7 @@ void	check_map(t_game *game)
 			if ((ft_strlen(game->map[i]) != ft_strlen(tmp[j]))
 				|| (wall(tmp[j], 1, game) == 911))
 			{
-				ft_exit(game, 2, "Error_map_len");
+				ft_exit(game, 2, "Error_map_len", 0);
 			}
 			j++;
 		}

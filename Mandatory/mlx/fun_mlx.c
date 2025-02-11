@@ -6,13 +6,13 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/11 14:43:16 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:58:49 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	find_player(t_game	*g)
+void	player_p(t_game	*g)
 {
 	int	i;
 	int	j;
@@ -35,7 +35,7 @@ void	find_player(t_game	*g)
 	}
 }
 
-static void	move_player(t_game *g, int new_x, int new_y)
+void	move_player(t_game *g, int new_x, int new_y)
 {
 	if (g->map[new_x][new_y] == '0')
 	{
@@ -51,7 +51,7 @@ static void	move_player(t_game *g, int new_x, int new_y)
 		g->c--;
 	}
 	if (g->map[new_x][new_y] == 'E' && g->c == 0)
-		ft_exit(g, 1, "You win!");
+		ft_exit(g, 1, "You win!", 911);
 	if (g->map[new_x][new_y] == 'E' && g->c != 0)
 		return ;
 	if (g->map[new_x][new_y] == '1')
@@ -60,9 +60,9 @@ static void	move_player(t_game *g, int new_x, int new_y)
 	printf("move => [%d] <<=>> coins => [%d]\n", g->n,  g->c);
 }
 
-static void	action_player(int key, t_game *g)
+void	action_player(int key, t_game *g)
 {
-	find_player(g);
+	player_p(g);
 	if (key == W)
 		move_player(g, g->x - 1, g->y);
 	if (key == S)
@@ -76,7 +76,7 @@ static void	action_player(int key, t_game *g)
 int	handle_keypress(int key, t_game *g)
 {
 	if (key == ESC)
-		ft_exit(g, 1, "you are exit");
+		ft_exit(g, 1, "you are exit", 911);
 	if (key == W || key == S || key == A || key == D)
 		action_player(key, g);
 	return (0);
