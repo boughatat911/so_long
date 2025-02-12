@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/12 19:55:33 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:01:15 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	action_player(int key, t_game *g);
 int		handle_keypress(int key, t_game *g);
 
 ///////////////parsing_function//////////////////////////////
+void	ft_itoa(int n);
 void	ft_free2d(char **array);
 char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);

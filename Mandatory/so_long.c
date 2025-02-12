@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/12 19:51:54 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:04:19 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,6 @@ void	ft_map(char	**av, t_game	*game)
 int	main(int ac, char **av)
 {
 	t_game	*game;
-
-	// game->map = NULL;
-	// game;
-	// game;
 
 	if (ac != 2)
 	{
