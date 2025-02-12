@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/12 20:00:57 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:51:14 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,28 @@ void	ft_free2d(char **array)
 
 void	ft_exit(t_game	*game, int fd, char	*str, int mlx)
 {
-	ft_free2d(game->map);
-	ft_free2d(game->tmp_map);
-	putstr(str, fd);
-	if(mlx == 911)
+	(ft_free2d(game->map), ft_free2d(game->tmp_map));
+	if (mlx == 911)
 	{	
-	if (game->textures.wall)
-		mlx_destroy_image(game->mlx, game->textures.wall);
-	if (game->textures.floor)
-		mlx_destroy_image(game->mlx, game->textures.floor);
-	if (game->textures.player)
-		mlx_destroy_image(game->mlx, game->textures.player);
-	if (game->textures.collectible)
-		mlx_destroy_image(game->mlx, game->textures.collectible);
-	if (game->textures.exit)
-		mlx_destroy_image(game->mlx, game->textures.exit);
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
-	if (game->mlx)
-	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
+		if (game->textures.wall)
+			mlx_destroy_image(game->mlx, game->textures.wall);
+		if (game->textures.floor)
+			mlx_destroy_image(game->mlx, game->textures.floor);
+		if (game->textures.player)
+			mlx_destroy_image(game->mlx, game->textures.player);
+		if (game->textures.collectible)
+			mlx_destroy_image(game->mlx, game->textures.collectible);
+		if (game->textures.exit)
+			mlx_destroy_image(game->mlx, game->textures.exit);
+		if (game->win)
+			mlx_destroy_window(game->mlx, game->win);
+		if (game->mlx)
+		{
+			mlx_destroy_display(game->mlx);
+			free(game->mlx);
+		}
 	}
-	}
-	(close(game->fd), free(game));
+	(putstr(str, fd), free(game));
 	if (fd == 1)
 		exit(0);
 	exit(1);
@@ -67,10 +65,10 @@ void	read_map(char **av, t_game *game)
 	str = NULL;
 	game->fd = open(av[1], O_RDONLY);
 	if (game->fd < 0)
-		ft_exit(game, 2, "fd error", 0);
+		ft_exit(game, 2, "fd error\n", 0);
 	line = get_next_line(game->fd);
 	if (!line)
-		(ft_exit(game, 2, "Empty map", 0));
+		(ft_exit(game, 2, "Empty map\n", 0));
 	while (line)
 	{
 		tmp = str;
@@ -80,10 +78,10 @@ void	read_map(char **av, t_game *game)
 	}
 	close(game->fd);
 	if (str[ft_strlen(str) - 1] == '\n')
-		ft_exit(game, 2, "Error finding new line in end of map", 0);
+		ft_exit(game, 2, "Error finding new line in end of map\n", 0);
 	game->map = ft_split(str, '\n');
 	if (!game->map)
-		(free(str), ft_exit(game, 2, "Error", 0));
+		(free(str), ft_exit(game, 2, "Error\n", 0));
 	free(str);
 }
 
@@ -100,10 +98,7 @@ void	exit_map(t_game	*game)
 		while (game->tmp_map[i][j])
 		{
 			if (game->tmp_map[i][j] != '1' && game->tmp_map[i][j] != 'X')
-			{
-				printf("%c\n", game->tmp_map[i][j]);
-				ft_exit(game, 2, "Error Player", 0);
-			}
+				ft_exit(game, 2, "Error Player\n", 0);
 			j++;
 		}
 		i++;
@@ -122,44 +117,4 @@ void	flood(char **map, int y, int x)
 		flood(map, y - 1, x);
 		flood(map, y, x - 1);
 	}
-}
-
-
-static int	get_length(int n)
-{
-	int len = 1;
-
-	if (n < 0)
-		n = -n;
-	while (n >= 10)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len);
-}
-void	ft_itoa(int n)
-{
-	long	num;
-	int		len;
-	char	*str;
-
-	num = n;
-	len = get_length(num);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return ;
-	str[len] = '\0';
-	if (num < 0)
-	{
-		str[0] = '-';
-		num = -num;
-	}
-	while (len-- && str[len] != '-')
-	{
-		str[len] = (num % 10) + '0';
-		num /= 10;
-	}
-	putstr(str, 1);
-	free(str);
 }

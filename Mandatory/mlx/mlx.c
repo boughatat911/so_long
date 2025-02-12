@@ -6,12 +6,11 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/11 14:45:13 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:49:07 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-#include "/home/nbougrin/boughatat/so_long/Mandatory/so_long.h"
 
 void	*create_window(t_game *game, int *win_width, int *win_height)
 {
@@ -33,14 +32,15 @@ void	load_textures(t_game *game)
 	int	h;
 
 	game->textures.wall = mlx_xpm_file_to_image
-		(game->mlx, "wall.xpm", &w, &h);
+		(game->mlx, "textures/wall.xpm", &w, &h);
 	game->textures.floor = mlx_xpm_file_to_image
-		(game->mlx, "floor.xpm", &w, &h);
+		(game->mlx, "textures/floor.xpm", &w, &h);
 	game->textures.player = mlx_xpm_file_to_image
-		(game->mlx, "player.xpm", &w, &h);
+		(game->mlx, "textures/player.xpm", &w, &h);
 	game->textures.collectible = mlx_xpm_file_to_image(game->mlx,
-			"collectible.xpm", &w, &h);
-	game->textures.exit = mlx_xpm_file_to_image(game->mlx, "exit.xpm", &w, &h);
+			"textures/collectible.xpm", &w, &h);
+	game->textures.exit = mlx_xpm_file_to_image(game->mlx,
+			"textures/exit.xpm", &w, &h);
 }
 
 void	render_tile(t_game *game, void *texture)

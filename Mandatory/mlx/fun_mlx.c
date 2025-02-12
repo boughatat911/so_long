@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/12 20:03:58 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:46:23 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ void	move_player(t_game *g, int new_x, int new_y)
 	if (g->map[new_x][new_y] == '1')
 		return ;
 	render_map(g, g->map);
-	printf("move => [%d] <<=>> coins => [%d]\n", g->n,  g->c);
+	putstr("Move number: ", 1);
+	ft_itoa(g->n);
+	putstr("\n", 1);
 }
 
 void	action_player(int key, t_game *g)
@@ -76,7 +78,7 @@ void	action_player(int key, t_game *g)
 int	handle_keypress(int key, t_game *g)
 {
 	if (key == ESC)
-		ft_exit(g, 1, "| You are exit |\n| Mission Failed!|", 911);
+		ft_exit(g, 1, "| You are exit |\n| Mission Failed!|\n", 911);
 	if (key == W || key == S || key == A || key == D)
 		action_player(key, g);
 	return (0);

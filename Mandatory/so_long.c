@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/12 20:04:19 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/12 20:49:29 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	putstr(char	*str, int fd)
 		write(fd, &str[i], 1);
 		i++;
 	}
-	write(fd, "\n", 1);
 }
 
 void	ft_map(char	**av, t_game	*game)
@@ -38,7 +37,7 @@ void	ft_map(char	**av, t_game	*game)
 		i++;
 	game->tmp_map = malloc(sizeof(char *) * (i + 1));
 	if (!game->tmp_map)
-		ft_exit(game, 2, "Error malloc failed in ft_map", 0);
+		ft_exit(game, 2, "Error malloc failed in ft_map\n", 0);
 	i = 0;
 	while (game->map[i])
 	{
