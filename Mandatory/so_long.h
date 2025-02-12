@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/12 15:19:36 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/12 19:55:33 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,7 @@ typedef struct s_game {
 	int			p;
 	int			e;
 	int			j;
-	int			*ex;
-	int			*ey;
 }				t_game;
-
-// typedef struct s_exit_pos {
-// 	int *ex;
-// 	int *ey;
-// } t_exit_pos;
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
