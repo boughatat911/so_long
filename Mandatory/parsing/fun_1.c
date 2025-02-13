@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/12 20:39:41 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:30:15 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,16 @@ void	check_map(t_game *game)
 		{
 			if ((ft_strlen(game->map[i]) != ft_strlen(tmp[j]))
 				|| (wall(tmp[j], 1, game) == 911))
-			{
 				ft_exit(game, 2, "Error_map_len\n", 0);
-			}
 			j++;
 		}
 		i++;
 	}
+	i = 0;
+	while (game->map[0][i])
+		i++;
+	if (i > 38)
+		ft_exit(game, 2, "Error map len\n", 0);
 	wall_check(game);
 }
 

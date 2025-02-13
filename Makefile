@@ -6,15 +6,15 @@
 #    By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 17:55:16 by nbougrin          #+#    #+#              #
-#    Updated: 2025/02/12 20:54:54 by nbougrin         ###   ########.fr        #
+#    Updated: 2025/02/13 13:39:29 by nbougrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	so_long
 
-CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror
 
-MLX_DIR =	mlx_linux  # MLX folder is directly in the root directory
+MLX_DIR =	mlx_linux
 MLX_LIB =	$(MLX_DIR)/libmlx_Linux.a
 MLX_FLAGS =	-L$(MLX_DIR) -lmlx_Linux -lX11 -lXext -lm
 
@@ -27,20 +27,20 @@ OBJ	=	$(FILES:.c=.o)
 
 all		: $(NAME)
 
-$(NAME)		: $(MLX_LIB) $(OBJ)
+$(NAME)		:  $(OBJ)
 		cc $(CFLAGS) $(OBJ) -o $(NAME) $(MLX_FLAGS)
 
-Mandatory/%.o	: Mandatory/%.c Mandatory/so_long.h
+Mandatory/%.o	: Mandatory/%.c Mandatory/so_long.h Makefile
 		cc $(CFLAGS) -c  $< -o $@
 
 $(MLX_LIB)	:
-		@make -C $(MLX_DIR)  # Ensure MLX is compiled before linking
+		@make $(MLX_DIR)
 
 clean		:
 		rm -f $(OBJ)
 
 fclean		: clean
 		rm -f $(NAME)
-		make -C $(MLX_DIR) clean  # Also clean MLX files
+		make $(MLX_DIR) clean
 
 re		: fclean all
