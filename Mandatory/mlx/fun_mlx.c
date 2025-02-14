@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/14 12:10:15 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/14 12:14:11 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ int	handle_keypress(int key, t_game *g)
 
 int	handle_close(t_game *g)
 {
-	ft_exit(g, 1, "| You are close window |\n|    Mission Failed!   |\n", 911);
+	ft_exit(g, 1, "| You closed window |\n|  Mission Failed!  |\n", 911);
 	return (0);
 }
