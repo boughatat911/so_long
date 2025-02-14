@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/12 20:46:23 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/14 10:24:09 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,14 @@ void	action_player(int key, t_game *g)
 int	handle_keypress(int key, t_game *g)
 {
 	if (key == ESC)
-		ft_exit(g, 1, "| You are exit |\n| Mission Failed!|\n", 911);
+		ft_exit(g, 1, "|  You are exit   |\n| Mission Failed! |\n", 911);
 	if (key == W || key == S || key == A || key == D)
 		action_player(key, g);
+	return (0);
+}
+
+int	handle_close(t_game *g)
+{
+	ft_exit(g, 1, "| You are close window |\n|    Mission Failed!   |\n", 911);
 	return (0);
 }

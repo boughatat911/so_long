@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/13 13:28:23 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/14 10:20:41 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		handle_keypress(int key, t_game *g); //************* */
 void	move_player(t_game *g, int new_x, int new_y);
 void	action_player(int key, t_game *g);
 int		handle_keypress(int key, t_game *g);
+int		handle_close(t_game *g);
 
 ///////////////parsing_function//////////////////////////////
 void	ft_itoa(int n);
