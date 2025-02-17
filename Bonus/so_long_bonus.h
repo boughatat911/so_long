@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 10:54:42 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:49:59 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,22 @@
 # define S 115
 # define D 100
 # define ESC 65307
-#define MAX_ENEMIES 5
+# define MAX_ENEMIES 5
 
 typedef struct s_textures {
 	void	*wall;
 	void	*floor;
 	void	*player;
 	void	*collectible;
-	void	*exit;
+	void	*exit_open;
 	void	*enemy;
+	void	*exit_close;
 }			t_textures;
 
 typedef struct s_enemy {
 	int		x;
 	int		y;
-	int dir;
+	// int dir;
 }			t_enemy;
 
 typedef struct s_game {
@@ -57,11 +58,12 @@ typedef struct s_game {
 	int			p;
 	int			e;
 	int			j;
-	// char **map;  // The game map
-    t_enemy enemies[MAX_ENEMIES];  // Array of enemies
-    int num_enemies;  // Number of enemies in the game
-	int map_width;    // Map width
-    int map_height;
+	int			e2x;
+	int			e2y;
+    t_enemy 	enemies[MAX_ENEMIES];
+	int			num_enemies;
+	int			map_width;
+	int			map_height;
 }				t_game;
 
 # ifndef BUFFER_SIZE
@@ -89,7 +91,7 @@ int		handle_keypress(int key, t_game *g);
 int		handle_close(t_game *g);
 
 ///////////////parsing_function//////////////////////////////
-void	ft_itoa(int n);
+void	ft_itoa(int n, char *src);
 void	ft_free2d(char **array);
 char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);

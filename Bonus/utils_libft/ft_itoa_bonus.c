@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:36:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/14 12:30:34 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:51:26 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	get_length(int n)
 	return (len);
 }
 
-void	ft_itoa(int n)
+void	ft_itoa(int n, char *src)
 {
 	long	num;
 	int		len;
@@ -49,6 +49,8 @@ void	ft_itoa(int n)
 		str[len] = (num % 10) + '0';
 		num /= 10;
 	}
+	putstr(src, 1);
 	putstr(str, 1);
+	putstr("\n", 1);
 	free(str);
 }

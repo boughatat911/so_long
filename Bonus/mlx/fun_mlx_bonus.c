@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:25:58 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 12:05:24 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:51:56 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	player_p(t_game	*g)
 		j = 0;
 		while (g->map[i][j])
 		{
+			if (g->map[i][j] == 'E')
+			{
+				g->e2y = i;
+				g->e2x = j;
+			}
 			if (g->map[i][j] == 'P')
 			{
 				g->x = j;
@@ -37,6 +42,9 @@ void	player_p(t_game	*g)
 
 void	move_player(t_game *g, int new_y, int new_x)
 {
+	if (g->c == 0)
+		mlx_put_image_to_window(g->mlx, g->win,
+			g->textures.exit_open, g->e2x * TILE_SIZE, g->e2y * TILE_SIZE);
 	if (g->map[new_y][new_x] == '0')
 	{
 		g->map[g->y][g->x] = '0';
@@ -57,16 +65,10 @@ void	move_player(t_game *g, int new_y, int new_x)
 	if (g->map[new_y][new_x] == '1')
 		return ;
 	if (g->map[g->enemies->y][g->enemies->x] == g->map[new_y][new_x])
-	{
-		putstr("|  Mission Failed!  |", 2);
-		// ft_exit(g, 2, "\n",911);
-		exit(1);
-	}
-	render_map(g, g->map);
-	putstr("Number Of Movements: ", 1);
-	ft_itoa(g->n);
-	putstr("\n", 1);
+		ft_exit(g, 2, "|  Mission Failed!  |\n",911);
+	(render_map(g, g->map), ft_itoa(g->n, "Number Of Movements: "));
 }
+
 
 void	action_player(int key, t_game *g)
 {

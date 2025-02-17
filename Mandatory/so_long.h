@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/14 10:20:41 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:56:50 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_textures {
 	void	*floor;
 	void	*player;
 	void	*collectible;
-	void	*exit;
+	void	*exit_open;
 }			t_textures;
 
 typedef struct s_game {

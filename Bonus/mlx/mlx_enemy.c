@@ -6,13 +6,11 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:50:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 13:06:24 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:49:12 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
-
-#define MAX_ENEMIES 5
 
 void find_enemies(t_game *g)
 {
@@ -53,8 +51,6 @@ static void	check_and_move_enemy(t_game *game, t_enemy *enemy, int new_x, int ne
 		// ft_exit(g, 2, "\n",911);
 		exit(1);
 	}
-	printf("<%d  %d> == <%d  %d>\n", game->y, game->x,new_y, new_x );
-	// int x  = 
 	if (new_x >= 0 && new_x < game->map_width
 		&& new_y >= 0 && new_y < game->map_height
 		&& game->map[new_y][new_x] == '0')

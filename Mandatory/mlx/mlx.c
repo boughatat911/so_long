@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/14 10:21:02 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:56:08 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	load_textures(t_game *game)
 		(game->mlx, "textures/player.xpm", &w, &h);
 	game->textures.collectible = mlx_xpm_file_to_image(game->mlx,
 			"textures/collectible.xpm", &w, &h);
-	game->textures.exit = mlx_xpm_file_to_image(game->mlx,
-			"textures/exit.xpm", &w, &h);
+	game->textures.exit_open = mlx_xpm_file_to_image(game->mlx,
+			"textures/exit_open.xpm", &w, &h);
 }
 
 void	render_tile(t_game *game, void *texture)
@@ -67,7 +67,7 @@ void	render_map(t_game *game, char **map)
 			else if (map[game->y][game->x] == 'C')
 				render_tile(game, game->textures.collectible);
 			else if (map[game->y][game->x] == 'E')
-				render_tile(game, game->textures.exit);
+				render_tile(game, game->textures.exit_open);
 			game->x++;
 		}
 		game->y++;

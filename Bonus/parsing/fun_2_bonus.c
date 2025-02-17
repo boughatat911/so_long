@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/14 17:41:00 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:43:50 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ void	ft_exit(t_game	*game, int fd, char	*str, int mlx)
 			mlx_destroy_image(game->mlx, game->textures.player);
 		if (game->textures.collectible)
 			mlx_destroy_image(game->mlx, game->textures.collectible);
-		if (game->textures.exit)
-			mlx_destroy_image(game->mlx, game->textures.exit);
+		if (game->textures.exit_close)
+			mlx_destroy_image(game->mlx, game->textures.exit_close);
 		if (game->textures.enemy)
 			mlx_destroy_image(game->mlx, game->textures.enemy);
+		if (game->textures.exit_open)
+			mlx_destroy_image(game->mlx, game->textures.exit_open);
 		if (game->win)
 			mlx_destroy_window(game->mlx, game->win);
 		if (game->mlx)
