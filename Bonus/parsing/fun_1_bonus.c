@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/14 18:07:13 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:48:56 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,29 @@ int	wall(char *str, int flag, t_game *game)
 void	wall_check(t_game	*g)
 {
 	int		i;
-
-	(1) && (i = 0, g->c = 0, g->p = 0, g->e = 0, g->j = 0);
+	i = 0;
 	while (g->map[g->j])
 	{
-		(1) && (g->s = g->map[g->j], i = 0);
+		g->s = g->map[g->j];
+		i = 0;
 		while (g->s[i])
 		{
-			// if (((g->s[i] == '1') || (g->s[i] == '0') || (g->s[i] == 'C') || (g->s[i] == 'P') || (g->s[i] == 'E')))
-			// 	ft_exit(g, 2, "Error map1\n", 0);
+			if ((g->s[i] != '1') && (g->s[i] != '0') && (g->s[i] != 'C') &&
+					(g->s[i] != 'P') && (g->s[i] != 'E') && (g->s[i] != 'B'))
+				ft_exit(g, 2, "Error map1\n", 0);
 			if (g->s[i] == 'C')
 				g->c++;
 			else if (g->s[i] == 'P')
 				g->p++;
 			else if (g->s[i] == 'E')
 				g->e++;
+			else if (g->s[i] == 'B')
+				g->B++;
 			i++;
 		}
 		g->j++;
 	}
-	if (g->p != 1 || g->e != 1 || g->c < 0)
-		ft_exit(g, 2, "Error map\n", 0);
-	(wall(g->map[g->j - 1], 2, g), wall(g->map[0], 2, g));
+		wall_check_2(g, g->j - 1);
 }
 
 int	ft_strcmp(char *s1, char *s2)

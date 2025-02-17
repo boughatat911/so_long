@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 15:42:02 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:30:37 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	*create_window(t_game *game, int *win_width, int *win_height)
 {
-	// int	map_width;
-	// int	map_height;
-
 	game->map_width = ft_strlen(game->map[0]);
 	game->map_height = 0;
 	while (game->map[game->map_height])
@@ -47,8 +44,6 @@ void	load_textures(t_game *game)
 			"textures/exit_open.xpm", &w, &h);
 }
 
-
-
 void	render_tile(t_game *game, void *texture)
 {
 	if (texture)
@@ -56,31 +51,6 @@ void	render_tile(t_game *game, void *texture)
 			game->win, texture, game->x * TILE_SIZE, game->y * TILE_SIZE);
 }
 
-// void	render_map(t_game *game, char **map)
-// {
-// 	game->y = 0;
-// 	while (map[game->y])
-// 	{
-// 		game->x = 0;
-// 		while (map[game->y][game->x])
-// 		{
-// 			if (map[game->y][game->x] == '1')
-// 				render_tile(game, game->textures.wall);
-// 			else if (map[game->y][game->x] == '0')
-// 				render_tile(game, game->textures.floor);
-// 			else if (map[game->y][game->x] == 'P')
-// 				render_tile(game, game->textures.player);
-// 			else if (map[game->y][game->x] == 'C')
-// 				render_tile(game, game->textures.collectible);
-// 			else if (map[game->y][game->x] == 'E')
-// 				render_tile(game, game->textures.exit);
-// 			else if (map[game->y][game->x] == 'B')
-// 				render_tile(game, game->textures.enemy);
-// 			game->x++;
-// 		}
-// 		game->y++;
-// 	}
-// }
 void	render_map(t_game *game, char **map)
 {
 	game->y = 0;
@@ -98,13 +68,7 @@ void	render_map(t_game *game, char **map)
 			else if (map[game->y][game->x] == 'C')
 				render_tile(game, game->textures.collectible);
 			else if (map[game->y][game->x] == 'E')
-			{
-				// ✅ Change exit image when all collectibles are collected
-				if (game->c == 0)
-					render_tile(game, game->textures.exit_open);
-				else
-					render_tile(game, game->textures.exit_close);
-			}
+				exit_status(game);
 			else if (map[game->y][game->x] == 'B')
 				render_tile(game, game->textures.enemy);
 			game->x++;
@@ -112,8 +76,6 @@ void	render_map(t_game *game, char **map)
 		game->y++;
 	}
 }
-
-
 void	mlx_map(t_game *game)
 {
 	int		win_width;

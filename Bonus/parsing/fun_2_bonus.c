@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 15:43:50 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:49:51 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,34 +27,39 @@ void	ft_free2d(char **array)
 	free(array);
 }
 
+void	free_mlx(t_game	*game)
+{
+	if (game->textures.wall)
+		mlx_destroy_image(game->mlx, game->textures.wall);
+	if (game->textures.floor)
+		mlx_destroy_image(game->mlx, game->textures.floor);
+	if (game->textures.player)
+		mlx_destroy_image(game->mlx, game->textures.player);
+	if (game->textures.collectible)
+		mlx_destroy_image(game->mlx, game->textures.collectible);
+	if (game->textures.enemy)
+		mlx_destroy_image(game->mlx, game->textures.enemy);
+	if (game->textures.exit_close)
+		mlx_destroy_image(game->mlx, game->textures.exit_close);
+	if (game->textures.exit_open)
+		mlx_destroy_image(game->mlx, game->textures.exit_open);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
+}
+
 void	ft_exit(t_game	*game, int fd, char	*str, int mlx)
 {
-	(ft_free2d(game->map), ft_free2d(game->tmp_map));
+	ft_free2d(game->map);
+	ft_free2d(game->tmp_map);
 	if (mlx == 911)
-	{	
-		if (game->textures.wall)
-			mlx_destroy_image(game->mlx, game->textures.wall);
-		if (game->textures.floor)
-			mlx_destroy_image(game->mlx, game->textures.floor);
-		if (game->textures.player)
-			mlx_destroy_image(game->mlx, game->textures.player);
-		if (game->textures.collectible)
-			mlx_destroy_image(game->mlx, game->textures.collectible);
-		if (game->textures.exit_close)
-			mlx_destroy_image(game->mlx, game->textures.exit_close);
-		if (game->textures.enemy)
-			mlx_destroy_image(game->mlx, game->textures.enemy);
-		if (game->textures.exit_open)
-			mlx_destroy_image(game->mlx, game->textures.exit_open);
-		if (game->win)
-			mlx_destroy_window(game->mlx, game->win);
-		if (game->mlx)
-		{
-			mlx_destroy_display(game->mlx);
-			free(game->mlx);
-		}
-	}
-	(putstr(str, fd), free(game));
+		free_mlx(game);
+	putstr(str, fd);
+	free(game);
 	if (fd == 1)
 		exit(0);
 	exit(1);

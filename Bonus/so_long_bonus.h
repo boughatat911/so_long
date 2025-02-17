@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 15:49:59 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:46:50 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct s_textures {
 typedef struct s_enemy {
 	int		x;
 	int		y;
-	// int dir;
 }			t_enemy;
 
 typedef struct s_game {
@@ -57,6 +56,7 @@ typedef struct s_game {
 	int			c;
 	int			p;
 	int			e;
+	int			B;
 	int			j;
 	int			e2x;
 	int			e2y;
@@ -77,7 +77,9 @@ void find_enemies(t_game *g);
 int game_loop(t_game *g);
 void move_enemies(t_game *g);
 
+
 ///////////////mlx_function//////////////////////////////
+void	free_mlx(t_game *game);
 void	mlx_map(t_game	*game);
 void	*create_window(t_game *game, int *win_width, int *win_height);
 void	load_textures(t_game *game);
@@ -89,6 +91,8 @@ void	move_player(t_game *g, int new_x, int new_y);
 void	action_player(int key, t_game *g);
 int		handle_keypress(int key, t_game *g);
 int		handle_close(t_game *g);
+void	exit_status(t_game *game);
+void	ins(t_game	*game);
 
 ///////////////parsing_function//////////////////////////////
 void	ft_itoa(int n, char *src);

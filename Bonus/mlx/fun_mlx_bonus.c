@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:25:58 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 15:51:56 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:51:13 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	move_player(t_game *g, int new_y, int new_x)
 		ft_exit(g, 2, "|  Mission Failed!  |\n",911);
 	(render_map(g, g->map), ft_itoa(g->n, "Number Of Movements: "));
 }
-
 
 void	action_player(int key, t_game *g)
 {
