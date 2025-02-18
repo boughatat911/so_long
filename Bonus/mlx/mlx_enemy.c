@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:50:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 17:14:54 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:59:33 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,17 @@ void	move_enemies(t_game *game)
 
 int	game_loop(t_game *game)
 {
+	static int frame_counter = 0;
+
 	if (!game)
 		ft_exit(game, 2, "Error\n", 911);
+	frame_counter++;
+	if (frame_counter % 50 == 0)
+	{
+		game->coin_frame = (game->coin_frame + 1) % 5;
+		render_map(game, game->map);
+	}
 	move_enemies(game);
 	render_map(game, game->map);
 	return (0);
 }
-

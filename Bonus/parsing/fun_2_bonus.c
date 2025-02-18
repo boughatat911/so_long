@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 19:49:51 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:02:14 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,27 @@ void	ft_free2d(char **array)
 
 void	free_mlx(t_game	*game)
 {
+	int	i;
+
 	if (game->textures.wall)
 		mlx_destroy_image(game->mlx, game->textures.wall);
 	if (game->textures.floor)
 		mlx_destroy_image(game->mlx, game->textures.floor);
 	if (game->textures.player)
 		mlx_destroy_image(game->mlx, game->textures.player);
-	if (game->textures.collectible)
-		mlx_destroy_image(game->mlx, game->textures.collectible);
 	if (game->textures.enemy)
 		mlx_destroy_image(game->mlx, game->textures.enemy);
 	if (game->textures.exit_close)
 		mlx_destroy_image(game->mlx, game->textures.exit_close);
 	if (game->textures.exit_open)
 		mlx_destroy_image(game->mlx, game->textures.exit_open);
+	i = 0;
+	while (i < 5)
+	{
+		if (game->textures.coin[i])
+			mlx_destroy_image(game->mlx, game->textures.coin[i]);
+		i++;
+	}
 	if (game->win)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)

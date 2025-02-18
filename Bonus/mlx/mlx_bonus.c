@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 17:15:40 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:43:58 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,18 @@ void	*create_window(t_game *game, int *win_width, int *win_height)
 	*win_height = game->map_height * TILE_SIZE;
 	return (mlx_new_window(game->mlx, *win_width, *win_height, "GTA"));
 }
+void	load_coin(t_game *game)
+{
+	int w;
+	int h;
 
+	game->textures.coin[0] = mlx_xpm_file_to_image(game->mlx, "textures/coin1.xpm", &w, &h);
+	game->textures.coin[1] = mlx_xpm_file_to_image(game->mlx, "textures/coin2.xpm", &w, &h);
+	game->textures.coin[2] = mlx_xpm_file_to_image(game->mlx, "textures/coin3.xpm", &w, &h);
+	game->textures.coin[3] = mlx_xpm_file_to_image(game->mlx, "textures/coin4.xpm", &w, &h);
+	game->textures.coin[4] = mlx_xpm_file_to_image(game->mlx, "textures/coin5.xpm", &w, &h);
+	game->coin_frame = 0;
+}
 void	load_textures(t_game *game)
 {
 	int	w;
@@ -34,14 +45,16 @@ void	load_textures(t_game *game)
 		(game->mlx, "textures/floor.xpm", &w, &h);
 	game->textures.player = mlx_xpm_file_to_image
 		(game->mlx, "textures/player_b.xpm", &w, &h);
-	game->textures.collectible = mlx_xpm_file_to_image(game->mlx,
-			"textures/collectible.xpm", &w, &h);
+	// game->textures.collectible = mlx_xpm_file_to_image(game->mlx,
+	// 		"textures/collectible.xpm", &w, &h);
 	game->textures.exit_close = mlx_xpm_file_to_image(game->mlx,
 			"textures/exit_close.xpm", &w, &h);
 	game->textures.enemy = mlx_xpm_file_to_image(game->mlx,
 			"textures/enemy.xpm", &w, &h);
 	game->textures.exit_open = mlx_xpm_file_to_image(game->mlx,
 			"textures/exit_open.xpm", &w, &h);
+	load_coin(game);
+	
 }
 
 void	render_tile(t_game *game, void *texture)
@@ -66,7 +79,8 @@ void	render_map(t_game *game, char **map)
 			else if (map[game->y][game->x] == 'P')
 				render_tile(game, game->textures.player);
 			else if (map[game->y][game->x] == 'C')
-				render_tile(game, game->textures.collectible);
+				render_tile(game, game->textures.coin[game->coin_frame]);
+				// render_tile(game, game->textures.collectible);
 			else if (map[game->y][game->x] == 'E')
 				exit_status(game);
 			else if (map[game->y][game->x] == 'B')

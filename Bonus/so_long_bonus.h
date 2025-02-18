@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 17:15:17 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:42:19 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_textures {
 	void	*exit_open;
 	void	*enemy;
 	void	*exit_close;
+	void	*coin[5];
 }			t_textures;
 
 typedef struct s_enemy {
@@ -65,6 +66,7 @@ typedef struct s_game {
 	int			num_enemies;
 	int			map_width;
 	int			map_height;
+	int			coin_frame;
 }				t_game;
 
 # ifndef BUFFER_SIZE
