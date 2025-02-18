@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 19:13:40 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:18:22 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,15 @@ typedef struct s_game {
 	void		*win;
 	char		**map;
 	char		**tmp_map;
+	char		*num_move;
 	char		*s;
 	t_textures	textures;
 	t_enemy		enemy;
+	t_enemy		enemies [MAX_ENEMIES];
+	int			num_enemies;
+	int			map_width;
+	int			map_height;
+	int			coin_frame;
 	int			x;
 	int			y;
 	int			fd;
@@ -66,12 +72,6 @@ typedef struct s_game {
 	int			j;
 	int			e2x;
 	int			e2y;
-	char		*num_move;
-	t_enemy		enemies [MAX_ENEMIES];
-	int			num_enemies;
-	int			map_width;
-	int			map_height;
-	int			coin_frame;
 }				t_game;
 
 ///////////////mlx_function//////////////////////////////
@@ -111,7 +111,6 @@ void	ft_map(char	**av, t_game *game);
 void	ft_exit(t_game	*game, int fd, char	*str, int mlx);
 int		wall(char *str, int flag, t_game *game);
 void	wall_check(t_game *g);
-// void	check_map(char **str);
 int		ft_strcmp(char *s1, char *s2);
 void	check_map(t_game *game);
 void	map_name(char *str);
