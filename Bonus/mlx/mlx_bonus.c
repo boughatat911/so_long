@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 15:58:32 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:15:40 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ void	render_map(t_game *game, char **map)
 		}
 		game->y++;
 	}
-	mlx_string_put(game->mlx, game->win, 50, 50, 0xFFFFFF, "Hello, MLX!");
-
+	display_move(game);
 }
+
 void	mlx_map(t_game *game)
 {
 	int		win_width;
@@ -86,12 +86,12 @@ void	mlx_map(t_game *game)
 	game->n = 0;
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		return ;
+		ft_exit(game, 2, "Error\n", 911);
 	game->win = create_window(game, &win_width, &win_height);
 	if (!game->win)
 	{
 		free(game->mlx);
-		return ;
+		ft_exit(game, 2, "Error\n", 911);
 	}
 	load_textures(game);
 	render_map(game, game->map);

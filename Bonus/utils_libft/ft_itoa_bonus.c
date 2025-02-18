@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:36:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 15:51:26 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:04:53 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 static int	get_length(int n)
 {
-	int	len;
+	int	len = 1;
 
-	len = 1;
-	if (n < 0)
-		n = -n;
 	while (n >= 10)
 	{
 		len++;
@@ -27,30 +24,23 @@ static int	get_length(int n)
 	return (len);
 }
 
-void	ft_itoa(int n, char *src)
+char	*ft_itoa(int n)
 {
-	long	num;
 	int		len;
 	char	*str;
 
-	num = n;
-	len = get_length(num);
+	if (n < 0)
+		return (NULL);
+	len = get_length(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
-		return ;
+		return (NULL);
 	str[len] = '\0';
-	if (num < 0)
+	while (len--)
 	{
-		str[0] = '-';
-		num = -num;
+		str[len] = (n % 10) + '0';
+		n /= 10;
 	}
-	while (len-- && str[len] != '-')
-	{
-		str[len] = (num % 10) + '0';
-		num /= 10;
-	}
-	putstr(src, 1);
-	putstr(str, 1);
-	putstr("\n", 1);
-	free(str);
+	return (str);
 }
+

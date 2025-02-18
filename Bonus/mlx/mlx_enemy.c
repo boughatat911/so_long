@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:50:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 15:45:36 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:14:54 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,13 @@ void find_enemies(t_game *g)
 		i++;
 	}
 }
-
+void	display_move(t_game *g)
+{
+	g->num_move = ft_itoa(g->n);
+	mlx_string_put(g->mlx, g->win, 10, 20, 0xFFFFFF, "Number Of Movements: ");
+	mlx_string_put(g->mlx, g->win, 5, 50, 0xFFFFFF, g->num_move);
+	free(g->num_move);
+}
 
 static void	check_and_move_enemy(t_game *game, t_enemy *enemy, int new_x, int new_y)
 {
@@ -106,7 +112,6 @@ int	game_loop(t_game *game)
 	if (!game)
 		ft_exit(game, 2, "Error\n", 911);
 	move_enemies(game);
-	mlx_string_put(game->mlx, game->win, 80, 80, 0xFFFFFF, "Hello, MLX!");
 	render_map(game, game->map);
 	return (0);
 }

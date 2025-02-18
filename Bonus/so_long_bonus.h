@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 21:30:16 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:15:17 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_game {
 	int			j;
 	int			e2x;
 	int			e2y;
+	char		*num_move;
     t_enemy 	enemies[MAX_ENEMIES];
 	int			num_enemies;
 	int			map_width;
@@ -73,9 +74,10 @@ typedef struct s_game {
 # define TILE_SIZE 100
 
 ///////////////mlx_function//////////////////////////////
-void find_enemies(t_game *g);
-int game_loop(t_game *g);
-void move_enemies(t_game *g);
+void	find_enemies(t_game *g);
+int		game_loop(t_game *g);
+void	move_enemies(t_game *g);
+void	display_move(t_game *g);
 
 
 ///////////////mlx_function//////////////////////////////
@@ -96,7 +98,7 @@ void	exit_status(t_game *game);
 void	ins(t_game	*game);
 
 ///////////////parsing_function//////////////////////////////
-void	ft_itoa(int n, char *src);
+char	*ft_itoa(int n);
 void	ft_free2d(char **array);
 char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);
