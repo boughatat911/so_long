@@ -6,14 +6,13 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 17:42:19 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:13:40 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
 
-# include <stdio.h>  ///**************/// 
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -25,6 +24,12 @@
 # define D 100
 # define ESC 65307
 # define MAX_ENEMIES 5
+
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 42
+# endif
+
+# define TILE_SIZE 100
 
 typedef struct s_textures {
 	void	*wall;
@@ -57,31 +62,23 @@ typedef struct s_game {
 	int			c;
 	int			p;
 	int			e;
-	int			B;
+	int			b;
 	int			j;
 	int			e2x;
 	int			e2y;
 	char		*num_move;
-    t_enemy 	enemies[MAX_ENEMIES];
+	t_enemy		enemies [MAX_ENEMIES];
 	int			num_enemies;
 	int			map_width;
 	int			map_height;
 	int			coin_frame;
 }				t_game;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-
-# define TILE_SIZE 100
-
 ///////////////mlx_function//////////////////////////////
 void	find_enemies(t_game *g);
 int		game_loop(t_game *g);
 void	move_enemies(t_game *g);
 void	display_move(t_game *g);
-
-
 ///////////////mlx_function//////////////////////////////
 void	wall_check_2(t_game	*g, int i);
 void	free_mlx(t_game *game);

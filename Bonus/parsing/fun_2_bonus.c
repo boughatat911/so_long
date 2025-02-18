@@ -6,26 +6,11 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 18:02:14 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:08:15 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
-
-void	ft_free2d(char **array)
-{
-	int	i;
-
-	i = 0;
-	if (!array)
-		return ;
-	while (array[i] != NULL)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
 
 void	free_mlx(t_game	*game)
 {
@@ -50,13 +35,6 @@ void	free_mlx(t_game	*game)
 			mlx_destroy_image(game->mlx, game->textures.coin[i]);
 		i++;
 	}
-	if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
-	if (game->mlx)
-	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-	}
 }
 
 void	ft_exit(t_game	*game, int fd, char	*str, int mlx)
@@ -64,7 +42,16 @@ void	ft_exit(t_game	*game, int fd, char	*str, int mlx)
 	ft_free2d(game->map);
 	ft_free2d(game->tmp_map);
 	if (mlx == 911)
+	{
 		free_mlx(game);
+		if (game->win)
+			mlx_destroy_window(game->mlx, game->win);
+		if (game->mlx)
+		{
+			mlx_destroy_display(game->mlx);
+			free(game->mlx);
+		}
+	}
 	putstr(str, fd);
 	free(game);
 	if (fd == 1)

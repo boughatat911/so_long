@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:36:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 17:04:53 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:08:01 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static int	get_length(int n)
 {
-	int	len = 1;
+	int	len;
 
+	len = 1;
 	while (n >= 10)
 	{
 		len++;
@@ -44,3 +45,17 @@ char	*ft_itoa(int n)
 	return (str);
 }
 
+void	ft_free2d(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (!array)
+		return ;
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}

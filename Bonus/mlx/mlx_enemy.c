@@ -6,40 +6,12 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:50:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 17:59:33 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:49:23 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long_bonus.h"
 
-void find_enemies(t_game *g)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	g->num_enemies = 0;
-
-	while (g->map[i])
-	{
-		j = 0;
-		while (g->map[i][j])
-		{
-			if (g->map[i][j] == 'B')
-			{
-				if (g->num_enemies < MAX_ENEMIES)
-				{
-					g->enemies[g->num_enemies].x = j;
-					g->enemies[g->num_enemies].y = i; 
-					g->num_enemies++;
-				}
-			}
-			j++;
-		}
-		i++;
-	}
-}
 void	display_move(t_game *g)
 {
 	g->num_move = ft_itoa(g->n);
@@ -48,19 +20,18 @@ void	display_move(t_game *g)
 	free(g->num_move);
 }
 
-static void	check_and_move_enemy(t_game *game, t_enemy *enemy, int new_x, int new_y)
+static void	check_move_enemy(t_game *game, t_enemy *enemy, int new_x, int new_y)
 {
 	player_p(game);
 	if (new_y == game->y && new_x == game->x)
 	{
 		putstr("|  Mission Failed! momo |", 2);
-		ft_exit(game, 2, "\n",911);
+		ft_exit(game, 2, "\n", 911);
 	}
 	if (new_x >= 0 && new_x < game->map_width
 		&& new_y >= 0 && new_y < game->map_height
 		&& game->map[new_y][new_x] == '0')
 	{
-	
 		game->map[enemy->y][enemy->x] = '0';
 		game->map[new_y][new_x] = 'B';
 		enemy->x = new_x;
@@ -85,7 +56,7 @@ static void	calculate_enemy_move(t_game *game, int i)
 		new_x--;
 	else if (direction == 3)
 		new_x++;
-	check_and_move_enemy(game, &game->enemies[i], new_x, new_y);
+	check_move_enemy(game, &game->enemies[i], new_x, new_y);
 }
 
 void	move_enemies(t_game *game)
@@ -109,7 +80,7 @@ void	move_enemies(t_game *game)
 
 int	game_loop(t_game *game)
 {
-	static int frame_counter = 0;
+	static int	frame_counter = 0;
 
 	if (!game)
 		ft_exit(game, 2, "Error\n", 911);

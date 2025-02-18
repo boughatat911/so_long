@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 19:48:56 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:05:55 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	wall(char *str, int flag, t_game *game)
 
 void	wall_check(t_game	*g)
 {
-	int		i;
+	int	i;
+
 	i = 0;
 	while (g->map[g->j])
 	{
@@ -45,8 +46,8 @@ void	wall_check(t_game	*g)
 		i = 0;
 		while (g->s[i])
 		{
-			if ((g->s[i] != '1') && (g->s[i] != '0') && (g->s[i] != 'C') &&
-					(g->s[i] != 'P') && (g->s[i] != 'E') && (g->s[i] != 'B'))
+			if ((g->s[i] != '1') && (g->s[i] != '0') && (g->s[i] != 'C')
+				&& (g->s[i] != 'P') && (g->s[i] != 'E') && (g->s[i] != 'B'))
 				ft_exit(g, 2, "Error map1\n", 0);
 			if (g->s[i] == 'C')
 				g->c++;
@@ -55,12 +56,12 @@ void	wall_check(t_game	*g)
 			else if (g->s[i] == 'E')
 				g->e++;
 			else if (g->s[i] == 'B')
-				g->B++;
+				g->b++;
 			i++;
 		}
 		g->j++;
 	}
-		wall_check_2(g, g->j - 1);
+	wall_check_2(g, g->j - 1);
 }
 
 int	ft_strcmp(char *s1, char *s2)
