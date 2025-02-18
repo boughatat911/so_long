@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:50:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 17:46:56 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:45:36 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ void	move_enemies(t_game *game)
 	int			i;
 
 	if (!game || !game->map)
-		return ;
+		ft_exit(game, 2, "Error\n", 911);
 	find_enemies(game);
 	frame_counter++;
-	if (frame_counter % 100 != 0)
+	if (frame_counter % 10 != 0)
 		return ;
 	i = 0;
 	while (i < game->num_enemies)
@@ -104,8 +104,9 @@ void	move_enemies(t_game *game)
 int	game_loop(t_game *game)
 {
 	if (!game)
-		return (-1);
+		ft_exit(game, 2, "Error\n", 911);
 	move_enemies(game);
+	mlx_string_put(game->mlx, game->win, 80, 80, 0xFFFFFF, "Hello, MLX!");
 	render_map(game, game->map);
 	return (0);
 }

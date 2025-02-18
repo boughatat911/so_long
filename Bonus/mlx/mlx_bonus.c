@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 19:30:37 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:58:32 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	load_textures(t_game *game)
 	game->textures.floor = mlx_xpm_file_to_image
 		(game->mlx, "textures/floor.xpm", &w, &h);
 	game->textures.player = mlx_xpm_file_to_image
-		(game->mlx, "textures/player.xpm", &w, &h);
+		(game->mlx, "textures/player_b.xpm", &w, &h);
 	game->textures.collectible = mlx_xpm_file_to_image(game->mlx,
 			"textures/collectible.xpm", &w, &h);
 	game->textures.exit_close = mlx_xpm_file_to_image(game->mlx,
@@ -75,6 +75,8 @@ void	render_map(t_game *game, char **map)
 		}
 		game->y++;
 	}
+	mlx_string_put(game->mlx, game->win, 50, 50, 0xFFFFFF, "Hello, MLX!");
+
 }
 void	mlx_map(t_game *game)
 {
