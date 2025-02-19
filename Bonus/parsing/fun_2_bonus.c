@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 10:40:14 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:02:16 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,9 @@ void	ft_exit(t_game	*game, int fd, char	*str, int mlx)
 void	read_map(char **av, t_game *game)
 {
 	char	*line;
-	char	*str;
 	char	*tmp;
 
-	str = NULL;
+	game->str_map = NULL;
 	game->fd = open(av[1], O_RDONLY);
 	if (game->fd < 0)
 		ft_exit(game, 2, "fd error\n", 0);
@@ -74,18 +73,19 @@ void	read_map(char **av, t_game *game)
 		(ft_exit(game, 2, "Empty map\n", 0));
 	while (line)
 	{
-		tmp = str;
-		str = ft_strjoin(str, line);
+		tmp = game->str_map;
+		game->str_map = ft_strjoin(game->str_map, line);
 		(free(line), free(tmp));
 		line = get_next_line (game->fd);
 	}
 	close(game->fd);
-	if (str[ft_strlen(str) - 1] == '\n')
+	check_new_line(game->str_map, game);
+	if (game->str_map[ft_strlen(game->str_map) - 1] == '\n')
 		ft_exit(game, 2, "Error finding new line in end of map\n", 0);
-	game->map = ft_split(str, '\n');
+	game->map = ft_split(game->str_map, '\n');
 	if (!game->map)
-		(free(str), ft_exit(game, 2, "Error\n", 0));
-	free(str);
+		(free(game->str_map), ft_exit(game, 2, "Error\n", 0));
+	free(game->str_map);
 }
 
 void	exit_map(t_game	*game)

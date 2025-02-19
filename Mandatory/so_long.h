@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:51:14 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:53:37 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_game {
 	char		**map;
 	char		**tmp_map;
 	char		*s;
+	char		*str_map;
 	t_textures	textures;
 	int			x;
 	int			y;
@@ -66,7 +67,7 @@ void	move_player(t_game *g, int new_x, int new_y);
 int		action_player(int key, t_game *g);
 int		handle_close(t_game *g);
 void	return_chek(t_game *game);
-
+void	check_new_line(char *str, t_game	*game);
 ///////////////parsing_function//////////////////////////////
 void	ft_itoa(int n, t_game *game);
 void	ft_free2d(char **array);

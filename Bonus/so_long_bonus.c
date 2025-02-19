@@ -6,11 +6,27 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 10:33:51 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:57:48 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	check_new_line(char *str, t_game	*game)
+{	
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (((str[i] == '\n' && str[i + 1] == '\n')) || str[0] != '1')
+		{
+			free(game->str_map);
+			ft_exit(game, 2, "Error finding new line in map\n", 0);
+		}
+		i++;
+	}
+}
 
 void	putstr(char	*str, int fd)
 {
