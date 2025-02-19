@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 18:46:54 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:52:49 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	load_textures(t_game *game)
 			"textures/enemy.xpm", &w, &h);
 	game->textures.exit_open = mlx_xpm_file_to_image(game->mlx,
 			"textures/exit_open.xpm", &w, &h);
+	return_chek(game);
 	load_coin(game);
 }
 

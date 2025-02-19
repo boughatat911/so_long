@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 19:30:01 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:53:44 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	find_enemies(t_game *g);
 int		game_loop(t_game *g);
 void	move_enemies(t_game *g);
 void	display_move(t_game *g);
+void	return_chek(t_game *game);
 ///////////////mlx_function//////////////////////////////
 void	wall_check_2(t_game	*g, int i);
 void	free_mlx(t_game *game);

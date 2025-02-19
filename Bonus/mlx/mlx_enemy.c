@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:50:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 18:49:23 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:06:40 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	move_enemies(t_game *game)
 		ft_exit(game, 2, "Error\n", 911);
 	find_enemies(game);
 	frame_counter++;
-	if (frame_counter % 10 != 0)
+	if (frame_counter % 30 != 0)
 		return ;
 	i = 0;
 	while (i < game->num_enemies)

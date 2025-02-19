@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 19:45:12 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:23:05 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	exit_map(t_game	*game)
 		while (game->tmp_map[i][j])
 		{
 			if (game->tmp_map[i][j] != '1' && game->tmp_map[i][j] != 'X' && game->tmp_map[i][j] != '0')
-				ft_exit(game, 2, "Error Player\n", 0);
+				ft_exit(game, 2, "Error map\n", 0);
 			j++;
 		}
 		i++;
@@ -110,14 +110,14 @@ void	exit_map(t_game	*game)
 
 void	flood(char **map, int y, int x)
 {
-	if (map[y][x] == 'E')
-		map[y][x] = 'X';
-	else if (map[y][x] != '1' && map[y][x] != 'X')
+	if (map[y][x] == 'E' || map[y][x] == 'B')
+		map[y][x] = '1';
+	else if (map[y][x] != '1')
 	{
-		map[y][x] = 'X';
-		flood(map, y + 1, x);
+		map[y][x] = '1';
 		flood(map, y, x + 1);
-		flood(map, y - 1, x);
 		flood(map, y, x - 1);
+		flood(map, y + 1, x);
+		flood(map, y - 1, x);
 	}
 }
