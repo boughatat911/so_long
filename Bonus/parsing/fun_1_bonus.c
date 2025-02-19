@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 10:38:55 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:05:10 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	wall_check(t_game	*g)
 		{
 			if ((g->s[i] != '1') && (g->s[i] != '0') && (g->s[i] != 'C')
 				&& (g->s[i] != 'P') && (g->s[i] != 'E') && (g->s[i] != 'B'))
-				ft_exit(g, 2, "Error map1\n", 0);
+				ft_exit(g, 2, "Error map\n", 0);
 			if (g->s[i] == 'C')
 				g->c++;
 			else if (g->s[i] == 'P')
@@ -89,7 +89,7 @@ void	check_map(t_game *game)
 		{
 			if ((ft_strlen(game->map[i]) != ft_strlen(tmp[j]))
 				|| (wall(tmp[j], 1, game) == 911))
-				ft_exit(game, 2, "Error_map_len\n", 0);
+				ft_exit(game, 2, "Error map len\n", 0);
 			j++;
 		}
 		i++;
@@ -106,7 +106,7 @@ void	map_name(char *str)
 {
 	if (ft_strlen(str) < 4 || ft_strcmp(".ber", &str[ft_strlen(str) - 4]))
 	{
-		write(2, "Error_map_name\n", 15);
+		write(2, "Error map name\n", 15);
 		exit(1);
 	}
 }

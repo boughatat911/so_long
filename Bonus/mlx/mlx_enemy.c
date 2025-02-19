@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:50:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 16:48:35 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:00:59 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ static void	check_move_enemy(t_game *game, t_enemy *enemy, int new_x, int new_y)
 		putstr("| Mission Failed! |\n", 2);
 		ft_exit(game, 2, "|      WASTED     |\n", 911);
 	}
-	if (new_x >= 0 && new_x < game->map_width
-		&& new_y >= 0 && new_y < game->map_height
-		&& game->map[new_y][new_x] == '0')
+	if (game->map[new_y][new_x] == '0')
 	{
 		game->map[enemy->y][enemy->x] = '0';
 		game->map[new_y][new_x] = 'B';
