@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/17 15:56:08 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:39:08 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	load_textures(t_game *game)
 			"textures/collectible.xpm", &w, &h);
 	game->textures.exit_open = mlx_xpm_file_to_image(game->mlx,
 			"textures/exit_open.xpm", &w, &h);
+	return_chek(game);
 }
 
 void	render_tile(t_game *game, void *texture)
@@ -82,12 +83,12 @@ void	mlx_map(t_game *game)
 	game->n = 0;
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		return ;
+		ft_exit(game, 1, "Error\n", 911);
 	game->win = create_window(game, &win_width, &win_height);
 	if (!game->win)
 	{
 		free(game->mlx);
-		return ;
+		ft_exit(game, 1, "Error\n", 911);
 	}
 	load_textures(game);
 	render_map(game, game->map);

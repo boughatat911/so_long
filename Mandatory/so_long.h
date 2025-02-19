@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 10:56:57 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:39:47 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ void	load_textures(t_game *game);
 void	render_tile(t_game *game, void *texture);
 void	render_map(t_game *game, char **map);
 int		key_action(int key, void *param);
-int		handle_keypress(int key, t_game *g); //************* */
+int		handle_keypress(int key, t_game *g);
 void	move_player(t_game *g, int new_x, int new_y);
 void	action_player(int key, t_game *g);
 int		handle_keypress(int key, t_game *g);
 int		handle_close(t_game *g);
+void	return_chek(t_game *game);
 
 ///////////////parsing_function//////////////////////////////
 void	ft_itoa(int n, t_game *game);

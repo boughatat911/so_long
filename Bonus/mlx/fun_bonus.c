@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:29:29 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:10:34 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:27:36 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,12 @@ void	ins(t_game	*game)
 		game->textures.coin[i] = NULL;
 		i++;
 	}
-	
 }
 
 void	wall_check_2(t_game	*g, int i)
 {
 	if (g->p != 1 || g->e != 1 || g->c < 0 || g->b <= 0 || g->b >= 6)
-		ft_exit(g, 2, "Error map14\n", 0);
+		ft_exit(g, 2, "Error map\n", 0);
 	wall(g->map[i], 2, g);
 	wall(g->map[0], 2, g);
 }
