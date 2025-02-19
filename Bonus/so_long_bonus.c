@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 10:19:27 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:33:51 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,6 @@ void	ft_map(char	**av, t_game	*game)
 	game->tmp_map[i] = NULL;
 	player_p(game);
 	flood(game->tmp_map, game->y, game->x);
-	i = 0;
-	while (game->tmp_map[i])
-	{
-		/* code */
-		putstr(game->tmp_map[i],1);
-		putstr("\n",1);
-		i++;
-	}
-	
 	exit_map(game);
 	mlx_map(game);
 }

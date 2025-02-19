@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 10:23:05 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:40:14 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_exit(t_game	*game, int fd, char	*str, int mlx)
 	{
 		free_mlx(game);
 		if (game->win)
-		mlx_destroy_window(game->mlx, game->win);
+			mlx_destroy_window(game->mlx, game->win);
 		if (game->mlx)
 		{
 			mlx_destroy_display(game->mlx);
@@ -100,7 +100,8 @@ void	exit_map(t_game	*game)
 		j = 0;
 		while (game->tmp_map[i][j])
 		{
-			if (game->tmp_map[i][j] != '1' && game->tmp_map[i][j] != 'X' && game->tmp_map[i][j] != '0')
+			if (game->tmp_map[i][j] != '1' && game->tmp_map[i][j] != 'X'
+				&& game->tmp_map[i][j] != '0')
 				ft_exit(game, 2, "Error map\n", 0);
 			j++;
 		}
