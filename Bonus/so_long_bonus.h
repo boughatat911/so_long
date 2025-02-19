@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 20:53:44 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:59:23 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	exit_status(t_game *game);
 void	ins(t_game	*game);
 
 ///////////////parsing_function//////////////////////////////
-char	*ft_itoa(int n);
+char	*ft_itoa(int n, t_game	*game);
 void	ft_free2d(char **array);
 char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);

@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:36:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 19:08:01 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:59:08 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ static int	get_length(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int n, t_game	*game)
 {
 	int		len;
 	char	*str;
 
+	if (n > 2147483647 ||  n < -2147483648)
+		ft_exit(game, 2, "Error itoa\n", 911);
 	if (n < 0)
 		return (NULL);
 	len = get_length(n);

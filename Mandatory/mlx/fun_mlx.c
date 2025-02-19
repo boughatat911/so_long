@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/14 12:14:11 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:56:29 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	move_player(t_game *g, int new_y, int new_x)
 		return ;
 	render_map(g, g->map);
 	putstr("Number Of Movements: ", 1);
-	ft_itoa(g->n);
+	ft_itoa(g->n, g);
 	putstr("\n", 1);
 }
 

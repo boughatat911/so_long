@@ -6,14 +6,13 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/18 19:15:41 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:56:57 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <stdio.h>  ///**************/// 
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -70,7 +69,7 @@ int		handle_keypress(int key, t_game *g);
 int		handle_close(t_game *g);
 
 ///////////////parsing_function//////////////////////////////
-void	ft_itoa(int n);
+void	ft_itoa(int n, t_game *game);
 void	ft_free2d(char **array);
 char	**ft_split(char const *s, char c);
 char	*get_next_line(int fd);
