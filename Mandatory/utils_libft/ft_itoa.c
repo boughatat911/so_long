@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 15:36:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:06:50 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:54:01 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	get_length(int n)
 
 void	ft_itoa(int n, t_game *game)
 {
-	long	num;
+	int		num;
 	int		len;
 	char	*str;
 

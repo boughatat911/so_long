@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 12:53:27 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:52:26 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	read_map(char **av, t_game *game)
 		ft_exit(game, 2, "fd error\n", 0);
 	line = get_next_line(game->fd);
 	if (!line)
-		(ft_exit(game, 2, "Empty map\n", 0));
+		ft_exit(game, 2, "Empty map\n", 0);
 	while (line)
 	{
 		tmp = game->str_map;
@@ -75,13 +75,14 @@ void	read_map(char **av, t_game *game)
 		(free(line), free(tmp));
 		line = get_next_line (game->fd);
 	}
-	(close(game->fd), check_new_line(game->str_map, game));
+	close(game->fd);
+	check_new_line(game->str_map, game);
 	if (game->str_map[ft_strlen(game->str_map) - 1] == '\n')
 		ft_exit(game, 2, "Error finding new line in end of map\n", 0);
 	game->map = ft_split(game->str_map, '\n');
-	if (!game->map)
-		(free(game->str_map), ft_exit(game, 2, "Error\n", 0));
 	free(game->str_map);
+	if (!game->map)
+		ft_exit(game, 2, "Error\n", 0);
 }
 
 void	exit_map(t_game	*game)

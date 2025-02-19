@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:37 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 12:38:17 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:50:32 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	map_name(char *str)
 {
 	if (ft_strlen(str) < 4 || ft_strcmp(".ber", &str[ft_strlen(str) - 4]))
 	{
-		write(2, "Error_map_name\n", 15);
+		write(2, "Error map name\n", 15);
 		exit(1);
 	}
 }
