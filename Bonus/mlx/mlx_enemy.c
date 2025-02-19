@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:50:05 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 10:59:36 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:48:35 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	check_move_enemy(t_game *game, t_enemy *enemy, int new_x, int new_y)
 	player_p(game);
 	if (new_y == game->y && new_x == game->x)
 	{
-		putstr("|  Mission Failed! momo |", 2);
-		ft_exit(game, 2, "\n", 911);
+		putstr("| Mission Failed! |\n", 2);
+		ft_exit(game, 2, "|      WASTED     |\n", 911);
 	}
 	if (new_x >= 0 && new_x < game->map_width
 		&& new_y >= 0 && new_y < game->map_height

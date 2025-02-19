@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:50:02 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:39:32 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void	load_coin(t_game	*game)
 {
 	int	w;
 	int	h;
+	int	i;
 
+	i = 0;
 	game->textures.coin[0] = mlx_xpm_file_to_image(
 			game->mlx, "textures/coin1.xpm", &w, &h);
 	game->textures.coin[1] = mlx_xpm_file_to_image(
@@ -39,6 +41,12 @@ void	load_coin(t_game	*game)
 	game->textures.coin[4] = mlx_xpm_file_to_image(
 			game->mlx, "textures/coin5.xpm", &w, &h);
 	game->coin_frame = 0;
+	while (i < 5)
+	{
+		if (!game->textures.coin[i])
+			ft_exit(game, 2, "Error\n", 911);
+		i++;
+	}
 }
 
 void	load_textures(t_game *game)

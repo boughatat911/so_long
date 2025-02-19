@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 12:25:58 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:56:20 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:50:02 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	move_player(t_game *g, int new_y, int new_x)
 	if (g->map[new_y][new_x] == '1')
 		return ;
 	if (g->map[g->enemies->y][g->enemies->x] == g->map[new_y][new_x])
-		ft_exit(g, 2, "|  Mission Failed!  |\n", 911);
+		ft_exit(g, 2, "| Mission Failed! |\n|      WASTED     |\n", 911);
 	render_map(g, g->map);
 }
 

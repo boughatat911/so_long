@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:29:29 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:58:08 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 16:07:36 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ins(t_game	*game)
 	game->e = 0;
 	game->j = 0;
 	game->b = 0;
+	game->coin_frame = 0;
 	i = 0;
 	while (i < 5)
 	{
