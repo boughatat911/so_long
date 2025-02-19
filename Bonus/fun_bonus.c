@@ -6,11 +6,11 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:29:29 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:57:21 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:58:08 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long_bonus.h"
+#include "so_long_bonus.h"
 
 void	exit_status(t_game *game)
 {
