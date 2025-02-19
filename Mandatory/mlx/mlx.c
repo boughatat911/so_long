@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:44:45 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 14:11:11 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,9 @@ void	mlx_map(t_game *game)
 	game->win = create_window(game, &win_width, &win_height);
 	if (!game->win)
 	{
+		mlx_destroy_display(game->mlx);
 		free(game->mlx);
-		ft_exit(game, 1, "Error\n", 911);
+		ft_exit(game, 1, "Error\n", 0);
 	}
 	load_textures(game);
 	render_map(game, game->map);

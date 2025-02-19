@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fun1_mlx.c                                         :+:      :+:    :+:   */
+/*   fun_mlx.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:46:49 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 13:31:10 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,5 @@ void	return_chek(t_game *game)
 	if (!game->textures.player)
 		ft_exit(game, 2, "Error: Player texture not loaded\n", 911);
 	if (!game->textures.exit_open)
-		ft_exit(game, 2, "Error: Exit (open) texture not loaded\n", 911);
+		ft_exit(game, 2, "Error: Exit texture not loaded\n", 911);
 }
