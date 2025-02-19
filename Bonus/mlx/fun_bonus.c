@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:29:29 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:27:36 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:57:21 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	exit_status(t_game *game)
 void	ins(t_game	*game)
 {
 	int	i;
+
 	game->c = 0;
 	game->p = 0;
 	game->e = 0;

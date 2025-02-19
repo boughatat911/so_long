@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 10:37:00 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 11:39:08 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:44:45 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	mlx_map(t_game *game)
 	}
 	load_textures(game);
 	render_map(game, game->map);
-	mlx_hook(game->win, 2, 1L << 0, handle_keypress, game);
+	mlx_hook(game->win, 2, 1L << 0, action_player, game);
 	mlx_hook(game->win, 17, 1L << 17, handle_close, game);
 	mlx_loop(game->mlx);
 	mlx_destroy_window(game->mlx, game->win);

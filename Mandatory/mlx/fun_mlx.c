@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fun_mlx.c                                          :+:      :+:    :+:   */
+/*   fun1_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 19:07:42 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 10:56:29 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:46:49 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,10 @@ void	move_player(t_game *g, int new_y, int new_x)
 	putstr("\n", 1);
 }
 
-void	action_player(int key, t_game *g)
+int	action_player(int key, t_game *g)
 {
+	if (key == ESC)
+		ft_exit(g, 1, "| You left the game |\n|  Mission Failed!  |\n", 911);
 	player_p(g);
 	if (key == W)
 		move_player(g, g->y - 1, g->x);
@@ -73,14 +75,6 @@ void	action_player(int key, t_game *g)
 		move_player(g, g->y, g->x - 1);
 	if (key == D)
 		move_player(g, g->y, g->x + 1);
-}
-
-int	handle_keypress(int key, t_game *g)
-{
-	if (key == ESC)
-		ft_exit(g, 1, "| You left the game |\n|  Mission Failed!  |\n", 911);
-	if (key == W || key == S || key == A || key == D)
-		action_player(key, g);
 	return (0);
 }
 
@@ -88,4 +82,16 @@ int	handle_close(t_game *g)
 {
 	ft_exit(g, 1, "| You closed window |\n|  Mission Failed!  |\n", 911);
 	return (0);
+}
+
+void	return_chek(t_game *game)
+{
+	if (!game->textures.wall)
+		ft_exit(game, 2, "Error: Wall texture not loaded\n", 911);
+	if (!game->textures.floor)
+		ft_exit(game, 2, "Error: Floor texture not loaded\n", 911);
+	if (!game->textures.player)
+		ft_exit(game, 2, "Error: Player texture not loaded\n", 911);
+	if (!game->textures.exit_open)
+		ft_exit(game, 2, "Error: Exit (open) texture not loaded\n", 911);
 }
