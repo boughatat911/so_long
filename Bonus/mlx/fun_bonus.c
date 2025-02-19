@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 19:29:29 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 10:26:16 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 11:10:34 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,19 @@ void	exit_status(t_game *game)
 
 void	ins(t_game	*game)
 {
+	int	i;
 	game->c = 0;
 	game->p = 0;
 	game->e = 0;
 	game->j = 0;
 	game->b = 0;
-	game->textures.coin[0] = NULL;
-	game->textures.coin[1] = NULL;
-	game->textures.coin[2] = NULL;
-	game->textures.coin[3] = NULL;
-	game->textures.coin[4] = NULL;
+	i = 0;
+	while (i < 5)
+	{
+		game->textures.coin[i] = NULL;
+		i++;
+	}
+	
 }
 
 void	wall_check_2(t_game	*g, int i)
