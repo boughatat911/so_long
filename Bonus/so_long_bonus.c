@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:06:54 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 12:57:48 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:13:39 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,11 @@ int	main(int ac, char **av)
 	}
 	map_name(av[1]);
 	game = malloc(sizeof(t_game));
+	if (!game)
+	{
+		write(2, "Error\n", 6);
+		return (2);
+	}
 	ins(game);
 	ft_map(av, game);
 	return (0);

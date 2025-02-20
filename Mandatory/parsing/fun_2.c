@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 15:52:26 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/19 20:15:32 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	read_map(char **av, t_game *game)
 
 	game->str_map = NULL;
 	game->fd = open(av[1], O_RDONLY);
-	if (game->fd < 0)
+	if (game->fd == -1)
 		ft_exit(game, 2, "fd error\n", 0);
 	line = get_next_line(game->fd);
 	if (!line)

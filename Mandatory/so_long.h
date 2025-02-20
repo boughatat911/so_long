@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:45:33 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 12:53:37 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/20 18:56:51 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	*create_window(t_game *game, int *win_width, int *win_height);
 void	load_textures(t_game *game);
 void	render_tile(t_game *game, void *texture);
 void	render_map(t_game *game, char **map);
-int		key_action(int key, void *param);
 void	move_player(t_game *g, int new_x, int new_y);
 int		action_player(int key, t_game *g);
 int		handle_close(t_game *g);
@@ -83,7 +82,6 @@ void	ft_map(char	**av, t_game *game);
 void	ft_exit(t_game	*game, int fd, char	*str, int mlx);
 int		wall(char *str, int flag, t_game *game);
 void	wall_check(t_game *g);
-// void	check_map(char **str);
 int		ft_strcmp(char *s1, char *s2);
 void	check_map(t_game *game);
 void	map_name(char *str);

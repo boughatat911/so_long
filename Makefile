@@ -6,7 +6,7 @@
 #    By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 17:55:16 by nbougrin          #+#    #+#              #
-#    Updated: 2025/02/19 18:06:30 by nbougrin         ###   ########.fr        #
+#    Updated: 2025/02/20 18:57:39 by nbougrin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ BONUS_FILES = Bonus/so_long_bonus.c Bonus/parsing/fun_1_bonus.c Bonus/parsing/fu
 			Bonus/mlx/mlx_bonus.c Bonus/mlx/fun_mlx_bonus.c Bonus/mlx/mlx_enemy.c
 
 OBJ	= $(MANDATORY_FILES:.c=.o)
+
 BONUS_OBJ = $(BONUS_FILES:.c=.o)
 
 all	: $(NAME)
@@ -41,21 +42,20 @@ $(NAME)	: $(OBJ) $(MLX_LIB)
 $(Bonus_NAME) : $(BONUS_OBJ) $(MLX_LIB)
 		cc $(CFLAGS) $(BONUS_OBJ) -o $(Bonus_NAME) $(MLX_FLAGS)
 
-Mandatory/%.o	: Mandatory/%.c Mandatory/so_long.h Makefile
+Mandatory/%.o	: Mandatory/%.c Mandatory/so_long.h
 		cc $(CFLAGS) -c $< -o $@
 
-Bonus/%.o	: Bonus/%.c Bonus/so_long_bonus.h Makefile
+Bonus/%.o	: Bonus/%.c Bonus/so_long_bonus.h
 		cc $(CFLAGS) -c $< -o $@
 
 $(MLX_LIB)	:
-		@make -C $(MLX_DIR)
+		make -C $(MLX_DIR)
 
 clean	:
 		rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean	: clean
 		rm -f $(NAME) $(Bonus_NAME)
-		make -C $(MLX_DIR) clean
 
 re		: fclean all
 
