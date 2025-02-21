@@ -6,7 +6,7 @@
 /*   By: nbougrin <nbougrin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:58:48 by nbougrin          #+#    #+#             */
-/*   Updated: 2025/02/19 13:02:16 by nbougrin         ###   ########.fr       */
+/*   Updated: 2025/02/21 20:11:14 by nbougrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	exit_map(t_game	*game)
 		while (game->tmp_map[i][j])
 		{
 			if (game->tmp_map[i][j] != '1' && game->tmp_map[i][j] != 'X'
-				&& game->tmp_map[i][j] != '0')
+				&& game->tmp_map[i][j] != '0' && game->tmp_map[i][j] != 'B')
 				ft_exit(game, 2, "Error map\n", 0);
 			j++;
 		}
